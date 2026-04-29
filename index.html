@@ -783,6 +783,148 @@ footer{
 }
 .lang-loading.visible{opacity:1}
 
+/* ── HAMBURGER MENU ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;
+  gap:5px;background:none;border:none;cursor:pointer;
+  padding:8px;z-index:200;
+}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;
+  background:rgba(255,255,255,0.8);
+  transition:all 0.3s ease;border-radius:2px;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile nav overlay */
+.mobile-nav-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,15,9,0.97);
+  z-index:150;flex-direction:column;
+  justify-content:center;align-items:center;gap:40px;
+  opacity:0;transition:opacity 0.3s ease;
+}
+.mobile-nav-overlay.active{opacity:1}
+.mobile-nav-overlay ul{
+  list-style:none;display:flex;flex-direction:column;
+  align-items:center;gap:28px;
+}
+.mobile-nav-overlay ul a{
+  font-size:22px;font-weight:500;color:rgba(255,255,255,0.7);
+  text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;
+  transition:color 0.3s;
+}
+.mobile-nav-overlay ul a:hover{color:var(--white)}
+.mobile-nav-overlay .nav-cta{font-size:15px;padding:14px 36px}
+.mobile-nav-overlay .lang-toggle{margin-top:12px}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+@media(max-width:1024px){
+  nav{padding:20px 32px}
+  #hero{padding:0 32px}
+  section{padding:80px 32px}
+  .hero-stats{right:32px;bottom:60px}
+  .contact-inner{padding:0 32px}
+  footer{padding:32px 32px}
+  .what-grid{gap:48px}
+  .clients-trust-inner{padding:0 32px}
+  .results-numbers{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:768px){
+  /* Hide desktop nav elements, show hamburger */
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .lang-toggle{display:none}
+  .nav-hamburger{display:flex}
+
+  nav{padding:18px 24px}
+
+  /* Cursor off on touch */
+  .cursor,.cursor-ring{display:none}
+  body{cursor:auto}
+  .btn-primary,.btn-ghost,.service-item,.price-cta{cursor:pointer}
+
+  /* HERO */
+  #hero{padding:100px 24px 80px;min-height:100svh;align-items:flex-start}
+  .hero-title{font-size:clamp(48px,14vw,72px);letter-spacing:-2px}
+  .hero-sub{font-size:17px;max-width:100%}
+  .hero-actions{flex-direction:column;gap:14px;margin-top:36px}
+  .btn-primary,.btn-ghost{text-align:center;padding:15px 28px;width:100%;display:block}
+  .hero-stats{
+    position:relative;right:auto;bottom:auto;
+    flex-direction:row;flex-wrap:wrap;
+    margin-top:48px;text-align:left;gap:28px;
+  }
+  .stat-item .num{font-size:36px}
+  .scroll-ind{display:none}
+
+  /* SECTIONS */
+  section{padding:64px 24px}
+
+  /* WHAT */
+  .what-grid{grid-template-columns:1fr;gap:40px}
+  .depth-grid{display:none}
+  .what-headline{font-size:clamp(32px,10vw,48px)}
+
+  /* FOR WHOM */
+  .whom-cards{grid-template-columns:1fr;gap:2px}
+  .whom-card{padding:36px 24px}
+
+  /* PRICING */
+  .pricing-title-block{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
+  .pricing-cards{grid-template-columns:1fr;gap:2px}
+  .price-card{padding:40px 28px}
+  .pricing-headline{font-size:clamp(32px,10vw,48px)}
+
+  /* CLIENTS */
+  #clients-trust{padding:64px 0}
+  .clients-trust-inner{padding:0 24px}
+  .clients-trust-headline{font-size:clamp(28px,9vw,44px)}
+  .clients-proof-strip{grid-template-columns:1fr 1fr;gap:2px}
+
+  /* RESULTS */
+  .results-header{flex-direction:column;gap:20px;margin-bottom:40px}
+  .results-note{text-align:left;max-width:100%}
+  .results-headline{font-size:clamp(32px,10vw,48px)}
+  .results-numbers{grid-template-columns:1fr 1fr;gap:2px}
+  .result-num-card{padding:28px 20px}
+  .big-num{font-size:clamp(36px,8vw,56px)}
+  .testimonials-grid{grid-template-columns:1fr;gap:2px}
+
+  /* CONTACT */
+  #contact{min-height:auto;padding:64px 0}
+  .contact-inner{
+    flex-direction:column;align-items:flex-start;
+    gap:36px;padding:0 24px;
+  }
+  .contact-text .big{font-size:clamp(44px,12vw,72px)}
+  .contact-text .sub{font-size:17px}
+  .wsp-btn{padding:16px 28px;font-size:14px;width:100%;justify-content:center}
+
+  /* FOOTER */
+  footer{
+    flex-direction:column;gap:16px;
+    text-align:center;padding:32px 24px;
+  }
+  .foot-links{justify-content:center;flex-wrap:wrap;gap:16px}
+
+  /* MARQUEE */
+  .marquee-wrap{margin:40px 0}
+}
+
+@media(max-width:480px){
+  .hero-title{font-size:clamp(40px,13vw,60px)}
+  .hero-eyebrow{font-size:13px}
+  .clients-proof-strip{grid-template-columns:1fr}
+  .results-numbers{grid-template-columns:1fr}
+  .proof-card{padding:24px 20px}
+  .testi-card{padding:32px 20px}
+  .whom-card{padding:28px 20px}
+}
+
 </style>
 </head>
 <body>
@@ -795,45 +937,64 @@ footer{
 <nav id="main-nav">
   <a href="#hero" class="nav-logo">horus.</a>
   <ul class="nav-links">
-    <li><a href="#what">Qué hacemos</a></li>
-    <li><a href="#forwhom">Para quién</a></li>
-    <li><a href="#pricing">Sistemas</a></li>
-    <li><a href="#clients-trust">Clientes</a></li>
-<li><a href="#results">Resultados</a></li>
+    <li><a href="#what" data-nav="what">Qué hacemos</a></li>
+    <li><a href="#forwhom" data-nav="forwhom">Para quién</a></li>
+    <li><a href="#pricing" data-nav="pricing">Sistemas</a></li>
+    <li><a href="#clients-trust" data-nav="clients">Clientes</a></li>
+    <li><a href="#results" data-nav="results">Resultados</a></li>
   </ul>
   <div class="lang-toggle">
-  <button class="lang-btn active" data-lang="en">EN</button>
-  <div class="lang-divider"></div>
-  <button class="lang-btn" data-lang="es">ES</button>
-  <span class="lang-loading" id="langLoading">···</span>
-</div>
-<a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="nav-cta">Hablar con nosotros</a>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <div class="lang-divider"></div>
+    <button class="lang-btn active" data-lang="es">ES</button>
+  </div>
+<a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="nav-cta" data-nav="cta">Hablar con nosotros</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <ul>
+    <li><a href="#what" class="mobile-nav-link">Qué hacemos</a></li>
+    <li><a href="#forwhom" class="mobile-nav-link">Para quién</a></li>
+    <li><a href="#pricing" class="mobile-nav-link">Sistemas</a></li>
+    <li><a href="#clients-trust" class="mobile-nav-link">Clientes</a></li>
+    <li><a href="#results" class="mobile-nav-link">Resultados</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="en" id="mobileLangEn">EN</button>
+    <div class="lang-divider"></div>
+    <button class="lang-btn" data-lang="es" id="mobileLangEs">ES</button>
+  </div>
+  <a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="nav-cta">Hablar con nosotros</a>
+</div>
 
 <!-- HERO -->
 <section id="hero" class="section-fade">
-  <div class="hero-eyebrow">Growth Marketing · Contenido · Diseño</div>
+  <div class="hero-eyebrow" data-t="hero-eyebrow">Growth Marketing · Contenido · Diseño</div>
   <h1 class="hero-title">
     We make<br/>
     brands <span class="italic">grow.</span>
   </h1>
-  <p class="hero-sub">Sistemas reales. Resultados medibles. Nosotros no damos servicios, construimos estructuras de crecimiento.</p>
+  <p class="hero-sub" data-t="hero-sub">Sistemas reales. Resultados medibles. Nosotros no damos servicios, construimos estructuras de crecimiento.</p>
   <div class="hero-actions">
-    <a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20empezar%20ahora." target="_blank" class="btn-primary">Empezar ahora</a>
-    <a href="#results" class="btn-ghost">Ver resultados</a>
+    <a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20empezar%20ahora." target="_blank" class="btn-primary" data-t="hero-btn1">Empezar ahora</a>
+    <a href="#results" class="btn-ghost" data-t="hero-btn2">Ver resultados</a>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
       <div class="num">+1.6K</div>
-      <div class="label">proyectos completados</div>
+      <div class="label" data-t="stat1-label">proyectos completados</div>
     </div>
     <div class="stat-item">
       <div class="num">+125</div>
-      <div class="label">clientes activos</div>
+      <div class="label" data-t="stat2-label">clientes activos</div>
     </div>
     <div class="stat-item">
       <div class="num">+3 años</div>
-      <div class="label">ayudando marcas</div>
+      <div class="label" data-t="stat3-label">ayudando marcas</div>
     </div>
   </div>
   <div class="scroll-ind">
@@ -867,13 +1028,13 @@ footer{
 
 <!-- WHAT WE DO -->
 <section id="what" class="section-fade">
-  <div class="section-label reveal">Qué hacemos</div>
+  <div class="section-label reveal" data-t="what-label">Qué hacemos</div>
   <div class="what-grid">
     <div>
       <h2 class="what-headline reveal reveal-delay-1">
-        No somos una agencia.<br/>
-        Somos tu<br/>
-        <em>sistema de crecimiento.</em>
+        <span data-t="what-h2-1">No somos una agencia.</span><br/>
+        <span data-t="what-h2-2">Somos tu</span><br/>
+        <em data-t="what-h2-em">sistema de crecimiento.</em>
       </h2>
       <div class="depth-grid reveal reveal-delay-2">
         <div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div>
@@ -885,43 +1046,43 @@ footer{
     <div class="services-list reveal reveal-delay-2">
       <div class="service-item">
         <div>
-          <div class="service-name">Growth Marketing</div>
-          <div class="service-tag">Estrategia · Paid · Orgánico</div>
+          <div class="service-name" data-t="svc1-name">Growth Marketing</div>
+          <div class="service-tag" data-t="svc1-tag">Estrategia · Paid · Orgánico</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
       <div class="service-item">
         <div>
-          <div class="service-name">Contenido desde el guión</div>
-          <div class="service-tag">Video · Foto · Copy · Edicion · Guiones</div>
+          <div class="service-name" data-t="svc2-name">Contenido desde el guión</div>
+          <div class="service-tag" data-t="svc2-tag">Video · Foto · Copy · Edicion · Guiones</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
       <div class="service-item">
         <div>
-          <div class="service-name">Landing Pages & Startups</div>
-          <div class="service-tag">HTML · CSS · React · Next.js · Ai Landing</div>
+          <div class="service-name" data-t="svc3-name">Landing Pages & Startups</div>
+          <div class="service-tag" data-t="svc3-tag">HTML · CSS · React · Next.js · Ai Landing</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
       <div class="service-item">
         <div>
-          <div class="service-name">AI-Powered Systems Automatization</div>
-          <div class="service-tag">Automatización · Inteligencia · Escala</div>
+          <div class="service-name" data-t="svc4-name">AI-Powered Systems Automatization</div>
+          <div class="service-tag" data-t="svc4-tag">Automatización · Inteligencia · Escala</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
       <div class="service-item">
         <div>
-          <div class="service-name">Diseño y Dirección de Redes</div>
-          <div class="service-tag">Branding · Visual · Identidad · Escabilidad</div>
+          <div class="service-name" data-t="svc5-name">Diseño y Dirección de Redes</div>
+          <div class="service-tag" data-t="svc5-tag">Branding · Visual · Identidad · Escabilidad</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
       <div class="service-item">
         <div>
-          <div class="service-name">Captación de Clientes Potenciales</div>
-          <div class="service-tag">Multi-estrategia · Targeting · CRM · Comunidades · Nicho</div>
+          <div class="service-name" data-t="svc6-name">Captación de Clientes Potenciales</div>
+          <div class="service-tag" data-t="svc6-tag">Multi-estrategia · Targeting · CRM · Comunidades · Nicho</div>
         </div>
         <div class="service-arrow">→</div>
       </div>
@@ -931,91 +1092,90 @@ footer{
 
 <!-- FOR WHOM -->
 <section id="forwhom" class="section-fade">
-  <div class="section-label reveal">Para quién es horus.</div>
+  <div class="section-label reveal" data-t="forwhom-label">Para quién es horus.</div>
   <div class="whom-cards">
     <div class="whom-card reveal reveal-delay-1">
       <div class="whom-num">01</div>
-      <div class="whom-title">Negocios que quieren escalar de verdad.</div>
-      <p class="whom-desc">Tienes tracción pero no sistema. Sabes que hay más, pero no sabes cómo llegar. Eso es exactamente para lo que existimos.</p>
+      <div class="whom-title" data-t="whom1-title">Negocios que quieren escalar de verdad.</div>
+      <p class="whom-desc" data-t="whom1-desc">Tienes tracción pero no sistema. Sabes que hay más, pero no sabes cómo llegar. Eso es exactamente para lo que existimos.</p>
       <span class="whom-tag">High Ticket</span>
     </div>
     <div class="whom-card reveal reveal-delay-2">
       <div class="whom-num">02</div>
-      <div class="whom-title">Marcas que necesitan presencia real en redes.</div>
-      <p class="whom-desc">Sin contenido vacío. Sin seguidores comprados. Construimos audiencias de valor que se convierten en clientes que pagan.</p>
+      <div class="whom-title" data-t="whom2-title">Marcas que necesitan presencia real en redes.</div>
+      <p class="whom-desc" data-t="whom2-desc">Sin contenido vacío. Sin seguidores comprados. Construimos audiencias de valor que se convierten en clientes que pagan.</p>
       <span class="whom-tag">+50K orgánicos</span>
     </div>
     <div class="whom-card reveal reveal-delay-3">
       <div class="whom-num">03</div>
-      <div class="whom-title">Startups que necesitan su primer 100K USD.</div>
-      <p class="whom-desc">Desde el stack técnico hasta la estrategia de adquisición. Acompañamos cada etapa del camino hacia la primera gran facturación.</p>
+      <div class="whom-title" data-t="whom3-title">Startups que necesitan su primer 100K USD.</div>
+      <p class="whom-desc" data-t="whom3-desc">Desde el stack técnico hasta la estrategia de adquisición. Acompañamos cada etapa del camino hacia la primera gran facturación.</p>
       <span class="whom-tag">+$100K USD</span>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="section-fade">
-  <div class="section-label reveal">Nuestros sistemas</div>
+  <div class="section-label reveal" data-t="pricing-label">Nuestros sistemas</div>
   <div class="pricing-title-block">
     <h2 class="pricing-headline reveal reveal-delay-1">
-      Elige tu<br/>
-      <em>sistema de crecimiento.</em>
+      <span data-t="pricing-h2-1">Elige tu</span><br/>
+      <em data-t="pricing-h2-em">sistema de crecimiento.</em>
     </h2>
-    <p class="pricing-sub reveal reveal-delay-2">Cada paquete es una estructura completa, no servicios sueltos. Un sistema diseñado para escalar.</p>
+    <p class="pricing-sub reveal reveal-delay-2" data-t="pricing-sub">Cada paquete es una estructura completa, no servicios sueltos. Un sistema diseñado para escalar.</p>
   </div>
   <div class="pricing-cards">
     <!-- STARTER -->
     <div class="price-card reveal reveal-delay-1">
-      <div class="price-tier-label">Sistema 01</div>
-      <div class="price-name">The Spark <em>— Starter</em></div>
-      <p class="price-tagline">Para marcas que están empezando a construir. La base sólida que todo crecimiento necesita.</p>
+      <div class="price-tier-label" data-t="p1-tier">Sistema 01</div>
+      <div class="price-name"><span data-t="p1-name">The Spark</span> <em>— Starter</em></div>
+      <p class="price-tagline" data-t="p1-tagline">Para marcas que están empezando a construir. La base sólida que todo crecimiento necesita.</p>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>Estrategia de contenido mensual</li>
-        <li>Diseño y edición de 10 piezas</li>
-        <li>Guiones y copy incluidos</li>
-        <li>Gestión de 1 red social</li>
-        <li>Reporte mensual de métricas</li>
-        <li>Acceso a sistema horus</li>
+        <li data-t="p1-f1">Estrategia de contenido mensual</li>
+        <li data-t="p1-f2">Diseño y edición de 10 piezas</li>
+        <li data-t="p1-f3">Guiones y copy incluidos</li>
+        <li data-t="p1-f4">Gestión de 1 red social</li>
+        <li data-t="p1-f5">Reporte mensual de métricas</li>
+        <li data-t="p1-f6">Acceso a sistema horus</li>
       </ul>
-      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Spark%20(Starter%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Spark — Starter">Aplicar ahora</a>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Spark%20(Starter%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Spark — Starter" data-t="p1-cta">Aplicar ahora</a>
     </div>
     <!-- MEDIUM - FEATURED -->
     <div class="price-card featured reveal reveal-delay-2">
-      <div class="featured-badge">Más elegido</div>
-      <div class="price-tier-label">Sistema 02</div>
-      <div class="price-name">The Engine <em>— Medium</em></div>
-      <p class="price-tagline">Para marcas que ya tienen base y quieren acelerar. Marcar punto de inflexión real.</p>
+      <div class="featured-badge" data-t="p2-badge">Más elegido</div>
+      <div class="price-tier-label" data-t="p2-tier">Sistema 02</div>
+      <div class="price-name"><span data-t="p2-name">The Engine</span> <em>— Medium</em></div>
+      <p class="price-tagline" data-t="p2-tagline">Para marcas que ya tienen base y quieren acelerar. Marcar punto de inflexión real.</p>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>Todo lo del Sistema 01</li>
-        <li>Producción de 20 piezas mensuales</li>
-        <li>Gestión de 2 redes sociales</li>
-        <li>Landing page o web incluida (a eleccion)</li>
-        <li>Paid media strategy (Meta/Google)</li>
-        <li>AI integrations & automations (CRM, ManyChat, Notion Systems)</li>
-        <li>Sesiones y reuniones de estrategia</li>
+        <li data-t="p2-f1">Todo lo del Sistema 01</li>
+        <li data-t="p2-f2">Producción de 20 piezas mensuales</li>
+        <li data-t="p2-f3">Gestión de 2 redes sociales</li>
+        <li data-t="p2-f4">Landing page o web incluida (a eleccion)</li>
+        <li data-t="p2-f5">Paid media strategy (Meta/Google)</li>
+        <li data-t="p2-f6">AI integrations & automations (CRM, ManyChat, Notion Systems)</li>
+        <li data-t="p2-f7">Sesiones y reuniones de estrategia</li>
       </ul>
-      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Engine%20(Medium%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Engine — Medium">Aplicar ahora</a>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Engine%20(Medium%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Engine — Medium" data-t="p2-cta">Aplicar ahora</a>
     </div>
     <!-- HIGH -->
     <div class="price-card reveal reveal-delay-3">
-      <div class="price-tier-label">Sistema 03</div>
-      <div class="price-name">The Machine <em>— High</em></div>
-      <p class="price-tagline">Para marcas listas para dominar. Sistema completo de crecimiento con todo activado.</p>
+      <div class="price-tier-label" data-t="p3-tier">Sistema 03</div>
+      <div class="price-name"><span data-t="p3-name">The Machine</span> <em>— High</em></div>
+      <p class="price-tagline" data-t="p3-tagline">Para marcas listas para dominar. Sistema completo de crecimiento con todo activado.</p>
       <div class="price-divider"></div>
       <ul class="price-features">
-        <li>Todo lo del Sistema 02</li>
-        <li>Producción ilimitada de contenido</li>
-        <li>3 redes + YouTube gestionadas</li>
-        <li>Equipo dedicado, todos los dias de la semana. non-stop </li>
-        <li>Funnel completo de captación (Social Media Ads, Lead Magnets, Email Nurturing, Webinars, Case Studies, White Papers, Lead Scoring, Automation, Testimonials, Reviews, Closing, Landing Pages, Call to Action (CTA), CRM, Conversion Rate Optimization (CRO), Analytics, Tracking Pixels.)</li>
-        <li>CRM y sistema de leads activo</li>
-        <li>Acceso prioritario a nuevas IAs</li>
-        <li>Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados</li>
+        <li data-t="p3-f1">Todo lo del Sistema 02</li>
+        <li data-t="p3-f2">Producción ilimitada de contenido</li>
+        <li data-t="p3-f3">3 redes + YouTube gestionadas</li>
+        <li data-t="p3-f4">Equipo dedicado, todos los dias de la semana. non-stop </li>
+        <li data-t="p3-f5">Funnel completo de captación (Social Media Ads, Lead Magnets, Email Nurturing, Webinars, Case Studies, White Papers, Lead Scoring, Automation, Testimonials, Reviews, Closing, Landing Pages, Call to Action (CTA), CRM, Conversion Rate Optimization (CRO), Analytics, Tracking Pixels.)</li>
+        <li data-t="p3-f6">CRM y sistema de leads activo</li>
+        <li data-t="p3-f7">Acceso prioritario a nuevas IAs</li>
+        <li data-t="p3-f8">Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados</li>
       </ul>
-      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Machine%20(High%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Machine — High">Aplicar ahora</a>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Machine%20(High%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Machine — High" data-t="p3-cta">Aplicar ahora</a>
     </div>
   </div>
 </section>
@@ -1037,12 +1197,12 @@ footer{
     <div class="bg-tile"></div>
   </div>
   <div class="clients-trust-inner">
-    <div class="section-label reveal">Confianza real</div>
+    <div class="section-label reveal" data-t="clients-label">Confianza real</div>
     <h2 class="clients-trust-headline reveal reveal-delay-1">
-      Marcas que<br/>
-      <em>confían en horus.</em>
+      <span data-t="clients-h2-1">Marcas que</span><br/>
+      <em data-t="clients-h2-em">confían en horus.</em>
     </h2>
-    <p class="clients-trust-sub reveal reveal-delay-2">No somos una apuesta. Somos el sistema que ya eligieron más de 125 marcas para crecer en serio.</p>
+    <p class="clients-trust-sub reveal reveal-delay-2" data-t="clients-sub">No somos una apuesta. Somos el sistema que ya eligieron más de 125 marcas para crecer en serio.</p>
     <div class="clients-logos-wrap reveal reveal-delay-2">
       <div class="clients-logos-track">
         <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span></div>
@@ -1086,69 +1246,68 @@ footer{
     <div class="clients-proof-strip">
       <div class="proof-card reveal reveal-delay-1">
         <div class="proof-metric">78<span>K</span></div>
-        <div class="proof-label">seguidores orgánicos en 2 meses</div>
+        <div class="proof-label" data-t="proof1-label">seguidores orgánicos en 2 meses</div>
         <span class="proof-client-tag">— Ramiro Cubria</span>
       </div>
       <div class="proof-card reveal reveal-delay-2">
         <div class="proof-metric">3<span>×</span></div>
-        <div class="proof-label">conversión en landing vs. versión anterior</div>
+        <div class="proof-label" data-t="proof2-label">conversión en landing vs. versión anterior</div>
         <span class="proof-client-tag">— Cluster Insumos</span>
       </div>
       <div class="proof-card reveal reveal-delay-3">
         <div class="proof-metric">$100<span>K</span></div>
-        <div class="proof-label">USD en 1 mes, con su programa coaching</div>
+        <div class="proof-label" data-t="proof3-label">USD en 1 mes, con su programa coaching</div>
         <span class="proof-client-tag">— joaquinlopezrealtor </span>
       </div>
       <div class="proof-card reveal reveal-delay-4">
         <div class="proof-metric">+50<span>K</span></div>
-        <div class="proof-label">promedio de seguidores alcanzados por cliente, que buscan visibilidad.</div>
+        <div class="proof-label" data-t="proof4-label">promedio de seguidores alcanzados por cliente, que buscan visibilidad.</div>
         <span class="proof-client-tag">— Múltiples clientes</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
 <section id="results" class="section-fade">
   <div class="results-header">
     <div>
-      <div class="section-label reveal">Resultados reales</div>
+      <div class="section-label reveal" data-t="results-label">Resultados reales</div>
       <h2 class="results-headline reveal reveal-delay-1">
-        Los números<br/>
-        <em>no mienten.</em>
+        <span data-t="results-h2-1">Los números</span><br/>
+        <em data-t="results-h2-em">no mienten.</em>
       </h2>
     </div>
-    <p class="results-note reveal reveal-delay-2">Tenemos pruebas de cada uno de estos números. No vendemos promesas.</p>
+    <p class="results-note reveal reveal-delay-2" data-t="results-note">Tenemos pruebas de cada uno de estos números. No vendemos promesas.</p>
   </div>
   <div class="results-numbers">
     <div class="result-num-card reveal reveal-delay-1">
       <div class="big-num">+1.6K</div>
-      <div class="big-num-label">proyectos entregados con éxito</div>
+      <div class="big-num-label" data-t="rn1-label">proyectos entregados con éxito</div>
     </div>
     <div class="result-num-card reveal reveal-delay-2">
       <div class="big-num">+125</div>
-      <div class="big-num-label">clientes que nos confían su marca</div>
+      <div class="big-num-label" data-t="rn2-label">clientes que nos confían su marca</div>
     </div>
     <div class="result-num-card reveal reveal-delay-3">
       <div class="big-num">+50K</div>
-      <div class="big-num-label">seguidores alcanzados por cliente</div>
+      <div class="big-num-label" data-t="rn3-label">seguidores alcanzados por cliente</div>
     </div>
    <div class="result-num-card reveal reveal-delay-4">
       <div class="big-num">$100K</div>
-      <div class="big-num-label">USD facturados por clientes nuestros</div>
+      <div class="big-num-label" data-t="rn4-label">USD facturados por clientes nuestros</div>
     </div>
     <div class="result-num-card reveal reveal-delay-4">
       <div class="big-num">3+</div>
-      <div class="big-num-label">años de trayectoria comprobada</div>
+      <div class="big-num-label" data-t="rn5-label">años de trayectoria comprobada</div>
     </div>
   </div>
   <div class="testimonials-grid">
     <div class="testi-card reveal reveal-delay-1">
       <div class="testi-quote-mark">"</div>
-      <p class="testi-text">Multiplicamos nuestras ventas gracias al sistema de captación que Horus nos brindó. Nunca buscamos crecer en redes como prioridad, ¡pero aun así también crecimos!</p>
+      <p class="testi-text" data-t="testi1-text">Multiplicamos nuestras ventas gracias al sistema de captación que Horus nos brindó. Nunca buscamos crecer en redes como prioridad, ¡pero aun así también crecimos!</p>
       <div class="testi-author">
         <span class="testi-name">Cluster Insumos</span>
-        <span class="testi-role">Founder · Tienda Insumos Informaticos Online</span>
+        <span class="testi-role" data-t="testi1-role">Founder · Tienda Insumos Informaticos Online</span>
       </div>
       <div class="testi-stars">
         <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
@@ -1156,10 +1315,10 @@ footer{
     </div>
     <div class="testi-card reveal reveal-delay-2">
       <div class="testi-quote-mark">"</div>
-      <p class="testi-text">Gracias al contenido de Horus, logramos una visibilidad brutal para mi coaching. Esa autoridad fue clave para cerrar mes de 100k</p>
+      <p class="testi-text" data-t="testi2-text">Gracias al contenido de Horus, logramos una visibilidad brutal para mi coaching. Esa autoridad fue clave para cerrar mes de 100k</p>
       <div class="testi-author">
         <span class="testi-name">joaquinlopezrealtor.</span>
-        <span class="testi-role">Realtor · Negocio Capital</span>
+        <span class="testi-role" data-t="testi2-role">Realtor · Negocio Capital</span>
       </div>
       <div class="testi-stars">
         <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
@@ -1167,10 +1326,10 @@ footer{
     </div>
     <div class="testi-card reveal reveal-delay-3">
       <div class="testi-quote-mark">"</div>
-      <p class="testi-text">El contenido que armamos con Horus no solo nos dio visibilidad, sino que se convirtió en una máquina de captación. Gracias a esa exposición constante, logramos generar cientos de dólares extra cada día de forma predecible.</p>
+      <p class="testi-text" data-t="testi3-text">El contenido que armamos con Horus no solo nos dio visibilidad, sino que se convirtió en una máquina de captación. Gracias a esa exposición constante, logramos generar cientos de dólares extra cada día de forma predecible.</p>
       <div class="testi-author">
         <span class="testi-name">Ramiro Cubria</span>
-        <span class="testi-role">CEO · Sell Your Knowledge</span>
+        <span class="testi-role" data-t="testi3-role">CEO · Sell Your Knowledge</span>
       </div>
       <div class="testi-stars">
         <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
@@ -1185,17 +1344,17 @@ footer{
   <div class="contact-inner">
     <div class="contact-text">
       <h2 class="big reveal">
-        Hablemos.<br/>
-        <em>Crezcamos.</em>
+        <span data-t="contact-h2-1">Hablemos.</span><br/>
+        <em data-t="contact-h2-em">Crezcamos.</em>
       </h2>
-      <p class="sub reveal reveal-delay-1">¿Listo para construir algo que realmente funcione? Un mensaje y ya estamos planeando por tu estrategia.</p>
+      <p class="sub reveal reveal-delay-1" data-t="contact-sub">¿Listo para construir algo que realmente funcione? Un mensaje y ya estamos planeando por tu estrategia.</p>
     </div>
     <div class="contact-actions reveal reveal-delay-2">
       <a href="https://wa.me/5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="wsp-btn">
         <svg class="wsp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Escribir por WhatsApp
+        <span data-t="contact-wsp">Escribir por WhatsApp</span>
       </a>
-      <span class="contact-footnote">Respondemos en menos de 6 horas</span>
+      <span class="contact-footnote" data-t="contact-foot">Respondemos en menos de 6 horas</span>
     </div>
   </div>
 </section>
@@ -1203,11 +1362,11 @@ footer{
 <!-- FOOTER -->
 <footer>
   <div class="foot-logo">horus.</div>
-  <div class="foot-copy">© 2025 horus. · growth marketing</div>
+  <div class="foot-copy" data-t="foot-copy">© 2025 horus. · growth marketing</div>
   <div class="foot-links">
     <a href="https://instagram.com/horusbuild" target="_blank">@horusbuild</a>
-    <a href="#what">Servicios</a>
-    <a href="#contact">Contacto</a>
+    <a href="#what" data-t="foot-services">Servicios</a>
+    <a href="#contact" data-t="foot-contact">Contacto</a>
   </div>
 </footer>
 
@@ -1310,32 +1469,282 @@ document.querySelectorAll('.plan-btn').forEach(btn => {
   });
 });
 
-async function translateText(text, targetLang){
-  const stripped = text.replace(/<[^>]+>/g, ' ').replace(/\s+/g,' ').trim();
-  if(!stripped) return text;
+/* ── HAMBURGER TOGGLE ── */
+const hamburger = document.getElementById('navHamburger');
+const mobileOverlay = document.getElementById('mobileNavOverlay');
 
-  const cacheKey = stripped;
-  if(cache[targetLang][cacheKey]) return cache[targetLang][cacheKey];
-
-  try {
-    const res = await fetch('https://libretranslate.com/translate', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        q: stripped,
-        source: targetLang === 'en' ? 'es' : 'en',
-        target: targetLang,
-        format: 'text'
-      })
-    });
-    const data = await res.json();
-    const translated = data.translatedText;
-    cache[targetLang][cacheKey] = translated;
-    return translated;
-  } catch(e) {
-    return text;
-  }
+function toggleMobileNav(open){
+  hamburger.classList.toggle('open', open);
+  mobileOverlay.style.display = open ? 'flex' : 'none';
+  requestAnimationFrame(() => {
+    mobileOverlay.classList.toggle('active', open);
+  });
+  document.body.style.overflow = open ? 'hidden' : '';
 }
+
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.contains('open');
+  toggleMobileNav(!isOpen);
+});
+
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => toggleMobileNav(false));
+});
+
+/* ── LANGUAGE TOGGLE — Static Dictionary ── */
+const translations = {
+  en: {
+    /* NAV */
+    '[data-nav="what"]':        'What We Do',
+    '[data-nav="forwhom"]':     'For Whom',
+    '[data-nav="pricing"]':     'Systems',
+    '[data-nav="clients"]':     'Clients',
+    '[data-nav="results"]':     'Results',
+    '[data-nav="cta"]':         'Talk to us',
+    /* HERO */
+    '[data-t="hero-eyebrow"]':  'Growth Marketing · Content · Design',
+    '[data-t="hero-sub"]':      'Real systems. Measurable results. We don\'t sell services — we build growth structures.',
+    '[data-t="hero-btn1"]':     'Start now',
+    '[data-t="hero-btn2"]':     'See results',
+    '[data-t="stat1-label"]':   'completed projects',
+    '[data-t="stat2-label"]':   'active clients',
+    '[data-t="stat3-label"]':   'helping brands',
+    /* MARQUEE items kept bilingual intentionally */
+    /* WHAT */
+    '[data-t="what-label"]':    'What We Do',
+    '[data-t="what-h2-1"]':     'We\'re not an agency.',
+    '[data-t="what-h2-2"]':     'We\'re your',
+    '[data-t="what-h2-em"]':    'growth system.',
+    '[data-t="svc1-name"]':     'Growth Marketing',
+    '[data-t="svc1-tag"]':      'Strategy · Paid · Organic',
+    '[data-t="svc2-name"]':     'Content from the Script',
+    '[data-t="svc2-tag"]':      'Video · Photo · Copy · Editing · Scripts',
+    '[data-t="svc3-name"]':     'Landing Pages & Startups',
+    '[data-t="svc3-tag"]':      'HTML · CSS · React · Next.js · AI Landing',
+    '[data-t="svc4-name"]':     'AI-Powered Systems Automatization',
+    '[data-t="svc4-tag"]':      'Automation · Intelligence · Scale',
+    '[data-t="svc5-name"]':     'Design & Social Media Direction',
+    '[data-t="svc5-tag"]':      'Branding · Visual · Identity · Scalability',
+    '[data-t="svc6-name"]':     'Lead Generation',
+    '[data-t="svc6-tag"]':      'Multi-strategy · Targeting · CRM · Communities · Niche',
+    /* FOR WHOM */
+    '[data-t="forwhom-label"]': 'Who is horus. for',
+    '[data-t="whom1-title"]':   'Businesses that want to scale for real.',
+    '[data-t="whom1-desc"]':    'You have traction but no system. You know there\'s more, but you don\'t know how to get there. That\'s exactly why we exist.',
+    '[data-t="whom2-title"]':   'Brands that need real social presence.',
+    '[data-t="whom2-desc"]':    'No empty content. No bought followers. We build value audiences that turn into paying clients.',
+    '[data-t="whom3-title"]':   'Startups that need their first $100K USD.',
+    '[data-t="whom3-desc"]':    'From the tech stack to the acquisition strategy. We accompany every step of the way toward the first big revenue milestone.',
+    /* PRICING */
+    '[data-t="pricing-label"]': 'Our Systems',
+    '[data-t="pricing-h2-1"]':  'Choose your',
+    '[data-t="pricing-h2-em"]': 'growth system.',
+    '[data-t="pricing-sub"]':   'Each package is a complete structure, not loose services. A system designed to scale.',
+    '[data-t="p1-tier"]':       'System 01',
+    '[data-t="p1-name"]':       'The Spark',
+    '[data-t="p1-tagline"]':    'For brands just starting to build. The solid foundation every growth needs.',
+    '[data-t="p1-f1"]':         'Monthly content strategy',
+    '[data-t="p1-f2"]':         'Design & editing of 10 pieces',
+    '[data-t="p1-f3"]':         'Scripts & copy included',
+    '[data-t="p1-f4"]':         'Management of 1 social network',
+    '[data-t="p1-f5"]':         'Monthly metrics report',
+    '[data-t="p1-f6"]':         'Access to horus system',
+    '[data-t="p1-cta"]':        'Apply now',
+    '[data-t="p2-badge"]':      'Most chosen',
+    '[data-t="p2-tier"]':       'System 02',
+    '[data-t="p2-name"]':       'The Engine',
+    '[data-t="p2-tagline"]':    'For brands that already have a base and want to accelerate. A real inflection point.',
+    '[data-t="p2-f1"]':         'Everything in System 01',
+    '[data-t="p2-f2"]':         'Production of 20 pieces/month',
+    '[data-t="p2-f3"]':         'Management of 2 social networks',
+    '[data-t="p2-f4"]':         'Landing page or website included (choice)',
+    '[data-t="p2-f5"]':         'Paid media strategy (Meta/Google)',
+    '[data-t="p2-f6"]':         'AI integrations & automations (CRM, ManyChat, Notion Systems)',
+    '[data-t="p2-f7"]':         'Strategy sessions & meetings',
+    '[data-t="p2-cta"]':        'Apply now',
+    '[data-t="p3-tier"]':       'System 03',
+    '[data-t="p3-name"]':       'The Machine',
+    '[data-t="p3-tagline"]':    'For brands ready to dominate. Full growth system with everything activated.',
+    '[data-t="p3-f1"]':         'Everything in System 02',
+    '[data-t="p3-f2"]':         'Unlimited content production',
+    '[data-t="p3-f3"]':         '3 networks + YouTube managed',
+    '[data-t="p3-f4"]':         'Dedicated team, every day of the week. non-stop',
+    '[data-t="p3-f5"]':         'Full acquisition funnel (Social Media Ads, Lead Magnets, Email Nurturing, Webinars, Case Studies, White Papers, Lead Scoring, Automation, Testimonials, Reviews, Closing, Landing Pages, CTA, CRM, CRO, Analytics, Tracking Pixels.)',
+    '[data-t="p3-f6"]':         'CRM & active lead system',
+    '[data-t="p3-f7"]':         'Priority access to new AIs',
+    '[data-t="p3-f8"]':         'Weekly call: strategy, content review, results review',
+    '[data-t="p3-cta"]':        'Apply now',
+    /* CLIENTS */
+    '[data-t="clients-label"]': 'Real Trust',
+    '[data-t="clients-h2-1"]':  'Brands that',
+    '[data-t="clients-h2-em"]': 'trust horus.',
+    '[data-t="clients-sub"]':   'We\'re not a bet. We\'re the system already chosen by 125+ brands to grow seriously.',
+    '[data-t="proof1-label"]':  'organic followers in 2 months',
+    '[data-t="proof2-label"]':  'conversion on landing vs previous version',
+    '[data-t="proof3-label"]':  'USD in 1 month, with coaching program',
+    '[data-t="proof4-label"]':  'average followers reached per client, seeking visibility.',
+    /* RESULTS */
+    '[data-t="results-label"]': 'Real Results',
+    '[data-t="results-h2-1"]':  'The numbers',
+    '[data-t="results-h2-em"]': 'don\'t lie.',
+    '[data-t="results-note"]':  'We have proof for every one of these numbers. We don\'t sell promises.',
+    '[data-t="rn1-label"]':     'successfully delivered projects',
+    '[data-t="rn2-label"]':     'clients who trust us with their brand',
+    '[data-t="rn3-label"]':     'followers reached per client',
+    '[data-t="rn4-label"]':     'USD billed by our clients',
+    '[data-t="rn5-label"]':     'years of proven track record',
+    '[data-t="testi1-text"]':   'We multiplied our sales thanks to the acquisition system Horus provided us. We never prioritized growing on social media — but we grew anyway!',
+    '[data-t="testi1-role"]':   'Founder · Online Computer Supplies Store',
+    '[data-t="testi2-text"]':   'Thanks to Horus\'s content, we achieved massive visibility for my coaching. That authority was key to closing a $100K month.',
+    '[data-t="testi2-role"]':   'Realtor · Negocio Capital',
+    '[data-t="testi3-text"]':   'The content we built with Horus not only gave us visibility — it became a lead generation machine. Thanks to that constant exposure, we started generating hundreds of extra dollars every day, predictably.',
+    '[data-t="testi3-role"]':   'CEO · Sell Your Knowledge',
+    /* CONTACT */
+    '[data-t="contact-h2-1"]':  'Let\'s talk.',
+    '[data-t="contact-h2-em"]': 'Let\'s grow.',
+    '[data-t="contact-sub"]':   'Ready to build something that actually works? One message and we\'re already planning your strategy.',
+    '[data-t="contact-wsp"]':   'Message on WhatsApp',
+    '[data-t="contact-foot"]':  'We reply in under 6 hours',
+    /* FOOTER */
+    '[data-t="foot-copy"]':     '© 2025 horus. · growth marketing',
+    '[data-t="foot-services"]': 'Services',
+    '[data-t="foot-contact"]':  'Contact',
+  },
+  es: {
+    '[data-nav="what"]':        'Qué hacemos',
+    '[data-nav="forwhom"]':     'Para quién',
+    '[data-nav="pricing"]':     'Sistemas',
+    '[data-nav="clients"]':     'Clientes',
+    '[data-nav="results"]':     'Resultados',
+    '[data-nav="cta"]':         'Hablar con nosotros',
+    '[data-t="hero-eyebrow"]':  'Growth Marketing · Contenido · Diseño',
+    '[data-t="hero-sub"]':      'Sistemas reales. Resultados medibles. Nosotros no damos servicios, construimos estructuras de crecimiento.',
+    '[data-t="hero-btn1"]':     'Empezar ahora',
+    '[data-t="hero-btn2"]':     'Ver resultados',
+    '[data-t="stat1-label"]':   'proyectos completados',
+    '[data-t="stat2-label"]':   'clientes activos',
+    '[data-t="stat3-label"]':   'ayudando marcas',
+    '[data-t="what-label"]':    'Qué hacemos',
+    '[data-t="what-h2-1"]':     'No somos una agencia.',
+    '[data-t="what-h2-2"]':     'Somos tu',
+    '[data-t="what-h2-em"]':    'sistema de crecimiento.',
+    '[data-t="svc1-name"]':     'Growth Marketing',
+    '[data-t="svc1-tag"]':      'Estrategia · Paid · Orgánico',
+    '[data-t="svc2-name"]':     'Contenido desde el guión',
+    '[data-t="svc2-tag"]':      'Video · Foto · Copy · Edicion · Guiones',
+    '[data-t="svc3-name"]':     'Landing Pages & Startups',
+    '[data-t="svc3-tag"]':      'HTML · CSS · React · Next.js · Ai Landing',
+    '[data-t="svc4-name"]':     'AI-Powered Systems Automatization',
+    '[data-t="svc4-tag"]':      'Automatización · Inteligencia · Escala',
+    '[data-t="svc5-name"]':     'Diseño y Dirección de Redes',
+    '[data-t="svc5-tag"]':      'Branding · Visual · Identidad · Escabilidad',
+    '[data-t="svc6-name"]':     'Captación de Clientes Potenciales',
+    '[data-t="svc6-tag"]':      'Multi-estrategia · Targeting · CRM · Comunidades · Nicho',
+    '[data-t="forwhom-label"]': 'Para quién es horus.',
+    '[data-t="whom1-title"]':   'Negocios que quieren escalar de verdad.',
+    '[data-t="whom1-desc"]':    'Tienes tracción pero no sistema. Sabes que hay más, pero no sabes cómo llegar. Eso es exactamente para lo que existimos.',
+    '[data-t="whom2-title"]':   'Marcas que necesitan presencia real en redes.',
+    '[data-t="whom2-desc"]':    'Sin contenido vacío. Sin seguidores comprados. Construimos audiencias de valor que se convierten en clientes que pagan.',
+    '[data-t="whom3-title"]':   'Startups que necesitan su primer 100K USD.',
+    '[data-t="whom3-desc"]':    'Desde el stack técnico hasta la estrategia de adquisición. Acompañamos cada etapa del camino hacia la primera gran facturación.',
+    '[data-t="pricing-label"]': 'Nuestros sistemas',
+    '[data-t="pricing-h2-1"]':  'Elige tu',
+    '[data-t="pricing-h2-em"]': 'sistema de crecimiento.',
+    '[data-t="pricing-sub"]':   'Cada paquete es una estructura completa, no servicios sueltos. Un sistema diseñado para escalar.',
+    '[data-t="p1-tier"]':       'Sistema 01',
+    '[data-t="p1-name"]':       'The Spark',
+    '[data-t="p1-tagline"]':    'Para marcas que están empezando a construir. La base sólida que todo crecimiento necesita.',
+    '[data-t="p1-f1"]':         'Estrategia de contenido mensual',
+    '[data-t="p1-f2"]':         'Diseño y edición de 10 piezas',
+    '[data-t="p1-f3"]':         'Guiones y copy incluidos',
+    '[data-t="p1-f4"]':         'Gestión de 1 red social',
+    '[data-t="p1-f5"]':         'Reporte mensual de métricas',
+    '[data-t="p1-f6"]':         'Acceso a sistema horus',
+    '[data-t="p1-cta"]':        'Aplicar ahora',
+    '[data-t="p2-badge"]':      'Más elegido',
+    '[data-t="p2-tier"]':       'Sistema 02',
+    '[data-t="p2-name"]':       'The Engine',
+    '[data-t="p2-tagline"]':    'Para marcas que ya tienen base y quieren acelerar. Marcar punto de inflexión real.',
+    '[data-t="p2-f1"]':         'Todo lo del Sistema 01',
+    '[data-t="p2-f2"]':         'Producción de 20 piezas mensuales',
+    '[data-t="p2-f3"]':         'Gestión de 2 redes sociales',
+    '[data-t="p2-f4"]':         'Landing page o web incluida (a eleccion)',
+    '[data-t="p2-f5"]':         'Paid media strategy (Meta/Google)',
+    '[data-t="p2-f6"]':         'AI integrations & automations (CRM, ManyChat, Notion Systems)',
+    '[data-t="p2-f7"]':         'Sesiones y reuniones de estrategia',
+    '[data-t="p2-cta"]':        'Aplicar ahora',
+    '[data-t="p3-tier"]':       'Sistema 03',
+    '[data-t="p3-name"]':       'The Machine',
+    '[data-t="p3-tagline"]':    'Para marcas listas para dominar. Sistema completo de crecimiento con todo activado.',
+    '[data-t="p3-f1"]':         'Todo lo del Sistema 02',
+    '[data-t="p3-f2"]':         'Producción ilimitada de contenido',
+    '[data-t="p3-f3"]':         '3 redes + YouTube gestionadas',
+    '[data-t="p3-f4"]':         'Equipo dedicado, todos los dias de la semana. non-stop',
+    '[data-t="p3-f5"]':         'Funnel completo de captación (Social Media Ads, Lead Magnets, Email Nurturing, Webinars, Case Studies, White Papers, Lead Scoring, Automation, Testimonials, Reviews, Closing, Landing Pages, Call to Action (CTA), CRM, Conversion Rate Optimization (CRO), Analytics, Tracking Pixels.)',
+    '[data-t="p3-f6"]':         'CRM y sistema de leads activo',
+    '[data-t="p3-f7"]':         'Acceso prioritario a nuevas IAs',
+    '[data-t="p3-f8"]':         'Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados',
+    '[data-t="p3-cta"]':        'Aplicar ahora',
+    '[data-t="clients-label"]': 'Confianza real',
+    '[data-t="clients-h2-1"]':  'Marcas que',
+    '[data-t="clients-h2-em"]': 'confían en horus.',
+    '[data-t="clients-sub"]':   'No somos una apuesta. Somos el sistema que ya eligieron más de 125 marcas para crecer en serio.',
+    '[data-t="proof1-label"]':  'seguidores orgánicos en 2 meses',
+    '[data-t="proof2-label"]':  'conversión en landing vs. versión anterior',
+    '[data-t="proof3-label"]':  'USD en 1 mes, con su programa coaching',
+    '[data-t="proof4-label"]':  'promedio de seguidores alcanzados por cliente, que buscan visibilidad.',
+    '[data-t="results-label"]': 'Resultados reales',
+    '[data-t="results-h2-1"]':  'Los números',
+    '[data-t="results-h2-em"]': 'no mienten.',
+    '[data-t="results-note"]':  'Tenemos pruebas de cada uno de estos números. No vendemos promesas.',
+    '[data-t="rn1-label"]':     'proyectos entregados con éxito',
+    '[data-t="rn2-label"]':     'clientes que nos confían su marca',
+    '[data-t="rn3-label"]':     'seguidores alcanzados por cliente',
+    '[data-t="rn4-label"]':     'USD facturados por clientes nuestros',
+    '[data-t="rn5-label"]':     'años de trayectoria comprobada',
+    '[data-t="testi1-text"]':   'Multiplicamos nuestras ventas gracias al sistema de captación que Horus nos brindó. Nunca buscamos crecer en redes como prioridad, ¡pero aun así también crecimos!',
+    '[data-t="testi1-role"]':   'Founder · Tienda Insumos Informaticos Online',
+    '[data-t="testi2-text"]':   'Gracias al contenido de Horus, logramos una visibilidad brutal para mi coaching. Esa autoridad fue clave para cerrar mes de 100k',
+    '[data-t="testi2-role"]':   'Realtor · Negocio Capital',
+    '[data-t="testi3-text"]':   'El contenido que armamos con Horus no solo nos dio visibilidad, sino que se convirtió en una máquina de captación. Gracias a esa exposición constante, logramos generar cientos de dólares extra cada día de forma predecible.',
+    '[data-t="testi3-role"]':   'CEO · Sell Your Knowledge',
+    '[data-t="contact-h2-1"]':  'Hablemos.',
+    '[data-t="contact-h2-em"]': 'Crezcamos.',
+    '[data-t="contact-sub"]':   '¿Listo para construir algo que realmente funcione? Un mensaje y ya estamos planeando por tu estrategia.',
+    '[data-t="contact-wsp"]':   'Escribir por WhatsApp',
+    '[data-t="contact-foot"]':  'Respondemos en menos de 6 horas',
+    '[data-t="foot-copy"]':     '© 2025 horus. · growth marketing',
+    '[data-t="foot-services"]': 'Servicios',
+    '[data-t="foot-contact"]':  'Contacto',
+  }
+};
+
+let currentLang = 'es';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const dict = translations[lang];
+  Object.keys(dict).forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.textContent = dict[selector];
+    });
+  });
+  /* update active button states — desktop + mobile */
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+/* Wire up ALL lang buttons (desktop nav + mobile overlay) */
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    if(lang !== currentLang) applyLanguage(lang);
+    /* close mobile menu if open */
+    toggleMobileNav(false);
+  });
+});
 
 </script>
 </body>
