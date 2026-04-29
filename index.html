@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>horus. WE SCALE UR BRAND.</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+
+<!-- Editor's Note font via CDN -->
+<style>
+@font-face {
+  font-family: 'EditorsNote';
+  src: url('https://fonts.cdnfonts.com/css/editors-note') format('woff2');
+  font-display: swap;
+}
+</style>
+<link href="https://fonts.cdnfonts.com/css/editors-note" rel="stylesheet"/>/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green-primary:#003428;
+  --green-mid:#005C48;
+  --green-vibrant:#00A878;
+  --green-mint:#A8D5C2;
+  --gold:#C8A96E;
+  --white:#FFFFFF;
+  --offwhite:#F5F5F0;
+  --carbon:#1C1C1C;
+  --grid-color:rgba(0,164,120,0.08);
+}
+html{scroll-behavior:smooth}
+body{
+  background:#001F16;
+  color:var(--white);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CUSTOM CURSOR */
+.cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--green-vibrant);
+  border-radius:50%;pointer-events:none;
+  z-index:9999;transform:translate(-50%,-50%);
+  transition:transform 0.1s,width 0.3s,height 0.3s,background 0.3s;
+  mix-blend-mode:difference;
+}
+.cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:1px solid rgba(0,168,120,0.4);
+  border-radius:50%;pointer-events:none;
+  z-index:9998;transform:translate(-50%,-50%);
+  transition:transform 0.18s ease,width 0.3s,height 0.3s;
+}
+
+/* GRID OVERLAY */
+.grid-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+  background-size:40px 40px;
+  opacity:0.6;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 60px;
+  background:linear-gradient(180deg,rgba(0,31,22,0.95) 0%,transparent 100%);
+  backdrop-filter:blur(2px);
+  transition:background 0.4s ease;
+}
+.nav-logo{
+  font-size:22px;font-weight:700;letter-spacing:-0.5px;
+  color:var(--white);text-decoration:none;
+}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,0.55);font-size:13px;
+  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
+  transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  background:var(--green-vibrant);color:var(--white);
+  padding:10px 28px;border-radius:2px;font-size:13px;
+  text-decoration:none;letter-spacing:0.06em;
+  font-weight:500;transition:background 0.3s,transform 0.2s;
+}
+.nav-cta:hover{background:var(--green-mid);transform:translateY(-1px)}
+
+/* HERO */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:0 60px;overflow:hidden;z-index:1;
+}
+.hero-eyebrow{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:16px;
+  color:var(--gold);letter-spacing:0.12em;
+  margin-bottom:28px;opacity:0;
+  animation:fadeBlurIn 1s 0.3s ease forwards;
+}
+.hero-title{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(64px,9vw,120px);
+  font-weight:700;line-height:0.92;
+  letter-spacing:-3px;
+  opacity:0;animation:fadeBlurIn 1s 0.5s ease forwards;
+}
+.hero-title span.italic{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;
+  color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-2px;
+}
+.hero-sub{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:20px;color:rgba(255,255,255,0.55);
+  margin-top:36px;max-width:480px;line-height:1.7;
+  opacity:0;animation:fadeBlurIn 1s 0.8s ease forwards;
+}
+.hero-actions{
+  display:flex;gap:20px;margin-top:52px;
+  opacity:0;animation:fadeBlurIn 1s 1s ease forwards;
+}
+.btn-primary{
+  background:var(--green-vibrant);color:var(--white);
+  padding:16px 42px;font-size:14px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:none;
+  text-decoration:none;display:inline-block;
+  transition:background 0.3s,transform 0.2s;
+}
+.btn-primary:hover{background:#00c98f;transform:translateY(-2px)}
+.btn-ghost{
+  border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);
+  padding:16px 42px;font-size:14px;font-weight:400;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:transparent;border-radius:2px;cursor:none;
+  text-decoration:none;display:inline-block;
+  transition:border-color 0.3s,color 0.3s;
+}
+.btn-ghost:hover{border-color:var(--white);color:var(--white)}
+.hero-stats{
+  position:absolute;right:60px;bottom:80px;
+  display:flex;flex-direction:column;gap:24px;text-align:right;
+  opacity:0;
+  animation:fadeBlurIn 1s 1.2s ease forwards;
+}
+.stat-item .num{
+  font-size:52px;font-weight:700;letter-spacing:-2px;
+  color:var(--white);line-height:1;
+}
+.stat-item .label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:13px;
+  color:var(--gold);letter-spacing:0.08em;
+}
+.hero-line{
+  position:absolute;bottom:0;left:60px;right:60px;
+  height:1px;background:linear-gradient(90deg,transparent,rgba(0,168,120,0.3),transparent);
+}
+
+/* SCROLL INDICATOR */
+.scroll-ind{
+  position:absolute;bottom:40px;left:60px;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fadeBlurIn 1s 1.4s ease forwards;
+}
+.scroll-ind span{
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);
+}
+.scroll-line{
+  width:40px;height:1px;
+  background:rgba(255,255,255,0.2);
+  position:relative;overflow:hidden;
+}
+.scroll-line::after{
+  content:'';position:absolute;top:0;left:-100%;
+  width:100%;height:100%;background:var(--green-vibrant);
+  animation:scrollAnim 2s 2s infinite;
+}
+
+/* SECTIONS COMMON */
+section{position:relative;z-index:1;padding:120px 60px}
+.section-label{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--green-vibrant);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::before{
+  content:'';display:block;width:24px;height:1px;
+  background:var(--green-vibrant);
+}
+
+/* WHAT WE DO */
+#what{background:#001A11}
+.what-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;margin-top:60px;align-items:start;
+}
+.what-headline{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(42px,5vw,68px);font-weight:700;
+  line-height:0.95;letter-spacing:-2px;
+}
+.what-headline em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-2px;
+}
+.services-list{display:flex;flex-direction:column;gap:0}
+.service-item{
+  padding:28px 0;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:none;transition:padding 0.3s;
+}
+.service-item:hover{padding-left:12px}
+.service-item:hover .service-arrow{opacity:1;transform:translateX(0)}
+.service-name{
+  font-size:18px;font-weight:500;letter-spacing:-0.3px;
+  transition:color 0.3s;
+}
+.service-item:hover .service-name{color:var(--green-vibrant)}
+.service-tag{
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);
+}
+.service-arrow{
+  font-size:18px;color:var(--green-vibrant);
+  opacity:0;transform:translateX(-8px);transition:all 0.3s;
+}
+
+/* DEEP GRID SECTION */
+
+.depth-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-template-rows:repeat(4,60px);
+  gap:2px;margin:80px 0;opacity:0.4;
+}
+.depth-cell{
+  background:var(--grid-color);
+  transition:background 0.3s,opacity 0.3s;
+}
+.depth-cell:hover{background:rgba(0,168,120,0.2);opacity:1}
+
+.depth-cell.filled{background:rgba(0,168,120,0.15)}
+
+@keyframes cellBlink{
+  0%,100%{opacity:0.4}
+  50%{opacity:1}
+}
+.depth-cell:nth-child(odd){animation:cellBlink 2.1s ease-in-out infinite}
+.depth-cell:nth-child(even){animation:cellBlink 2.1s ease-in-out infinite 1.05s}
+.depth-cell:nth-child(3n){animation:cellBlink 1.7s ease-in-out infinite 0.4s}
+.depth-cell:nth-child(5n){animation:cellBlink 2.5s ease-in-out infinite 0.8s}
+
+
+/* FOR WHOM */
+#forwhom{background:#001510}
+.whom-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;margin-top:60px;
+}
+.whom-card{
+  background:#002318;
+  padding:48px 36px;
+  position:relative;overflow:hidden;
+  transition:background 0.4s;
+}
+.whom-card:hover{background:#002e21}
+.whom-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:var(--green-vibrant);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s;
+}
+.whom-card:hover::before{transform:scaleX(1)}
+.whom-num{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);margin-bottom:32px;
+}
+.whom-title{
+  font-size:26px;font-weight:700;letter-spacing:-0.5px;
+  margin-bottom:16px;line-height:1.1;
+}
+.whom-desc{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:16px;
+  color:rgba(255,255,255,0.55);line-height:1.7;
+}
+.whom-tag{
+  display:inline-block;margin-top:28px;
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid var(--gold);
+  padding-bottom:2px;
+}
+
+/* PRICING */
+#pricing{background:#001A11}
+.pricing-title-block{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:end;margin-bottom:80px;
+}
+.pricing-headline{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(38px,4.5vw,60px);font-weight:700;
+  letter-spacing:-2px;line-height:0.95;
+}
+.pricing-headline em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-2px;
+}
+.pricing-sub{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:18px;
+  color:rgba(255,255,255,0.5);line-height:1.7;
+  max-width:400px;
+}
+.pricing-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.price-card{
+  background:#002318;padding:52px 40px;
+  position:relative;overflow:hidden;
+  transition:transform 0.3s,background 0.3s;
+}
+.price-card:hover{background:#002b1e;transform:translateY(-4px)}
+.price-card.featured{
+  background:#003428;
+  outline:1px solid var(--green-vibrant);
+  outline-offset:-1px;
+}
+.price-tier-label{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--green-vibrant);margin-bottom:12px;
+}
+.price-name{
+  font-size:32px;font-weight:700;letter-spacing:-1px;
+  margin-bottom:8px;
+}
+.price-name em{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-weight:400;font-size:0.8em;
+  color:var(--gold);
+}
+.price-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:15px;
+  color:rgba(255,255,255,0.45);margin-bottom:40px;
+  line-height:1.6;
+}
+.price-divider{
+  height:1px;background:rgba(255,255,255,0.08);
+  margin-bottom:32px;
+}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:14px}
+.price-features li{
+  font-size:14px;color:rgba(255,255,255,0.7);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+}
+.price-features li::before{
+  content:'';display:block;width:16px;height:16px;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%2300A878' stroke-width='1'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300A878' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  flex-shrink:0;margin-top:1px;
+}
+.price-cta{
+  display:block;margin-top:40px;text-align:center;
+  padding:14px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;
+  border:1px solid rgba(0,168,120,0.3);color:var(--white);
+  transition:background 0.3s,border-color 0.3s;
+  cursor:pointer;
+}
+.price-cta:hover,.price-card.featured .price-cta{
+  background:var(--green-vibrant);border-color:var(--green-vibrant);
+}
+.featured-badge{
+  position:absolute;top:0;right:40px;
+  background:var(--gold);color:var(--carbon);
+  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  padding:5px 12px;font-weight:700;
+}
+
+/* RESULTS */
+#results{background:#001510}
+.results-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:80px;
+}
+
+.results-headline{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(38px,4.5vw,60px);font-weight:700;
+  letter-spacing:-2px;line-height:0.95;
+}
+.results-headline em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-2px;
+}
+.results-note{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:16px;
+  color:rgba(255,255,255,0.4);max-width:280px;text-align:right;
+}
+.results-numbers{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:2px;margin-bottom:60px;
+}
+.result-num-card{
+  background:#002318;padding:44px 36px;
+  position:relative;
+}
+.result-num-card::after{
+  content:'';position:absolute;bottom:0;left:0;
+  height:2px;background:var(--green-vibrant);width:0;
+  transition:width 0.6s 0.2s;
+}
+.result-num-card.visible::after{width:100%}
+.big-num{
+  font-size:clamp(48px,5vw,72px);font-weight:700;
+  letter-spacing:-3px;line-height:1;color:var(--white);
+}
+.big-num-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:15px;
+  color:rgba(255,255,255,0.45);margin-top:12px;
+}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.testi-card{
+  background:#002318;padding:40px 32px;
+  position:relative;overflow:hidden;
+}
+.testi-quote-mark{
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:80px;line-height:0.6;
+  color:rgba(0,168,120,0.15);
+  position:absolute;top:24px;right:24px;
+}
+.testi-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:17px;
+  color:rgba(255,255,255,0.75);line-height:1.7;
+  position:relative;z-index:1;
+}
+.testi-author{
+  margin-top:28px;display:flex;flex-direction:column;gap:4px;
+}
+.testi-name{
+  font-size:13px;font-weight:500;letter-spacing:0.05em;
+}
+.testi-role{
+  font-size:12px;color:var(--gold);letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.testi-stars{
+  display:flex;gap:3px;margin-top:16px;
+}
+.star{
+  width:10px;height:10px;
+  background:var(--gold);
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+
+/* CONTACT */
+#contact{
+  background:var(--green-primary);
+  min-height:60vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.contact-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,92,72,0.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,92,72,0.25) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.contact-inner{
+  position:relative;z-index:1;
+  width:100%;padding:0 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:60px;
+}
+.contact-text .big{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(52px,7vw,100px);
+  font-weight:700;letter-spacing:-3px;line-height:0.9;
+}
+.contact-text .big em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;
+  color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-3px;
+}
+.contact-text .sub{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:20px;
+  color:rgba(255,255,255,0.5);margin-top:24px;max-width:400px;
+  line-height:1.6;
+}
+.contact-actions{display:flex;flex-direction:column;gap:14px}
+.wsp-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  background:var(--green-vibrant);color:var(--white);
+  padding:20px 44px;font-size:15px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
+  transition:background 0.3s,transform 0.2s;white-space:nowrap;
+}
+.wsp-btn:hover{background:#00c98f;transform:translateY(-2px)}
+.wsp-icon{width:22px;height:22px;fill:white}
+.contact-footnote{
+  font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);text-align:center;
+}
+
+/* FOOTER */
+footer{
+  background:#000e08;padding:40px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(255,255,255,0.06);
+  position:relative;z-index:1;
+}
+.foot-logo{font-size:18px;font-weight:700;color:rgba(255,255,255,0.4)}
+.foot-copy{
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);
+}
+.foot-links{display:flex;gap:28px}
+.foot-links a{
+  font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);text-decoration:none;
+  transition:color 0.3s;
+}
+.foot-links a:hover{color:var(--green-vibrant)}
+
+/* ANIMATIONS */
+@keyframes fadeBlurIn{
+  from{opacity:0;filter:blur(12px);transform:translateY(12px)}
+  to{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+@keyframes scrollAnim{
+  0%{left:-100%}
+  100%{left:100%}
+}
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;transform:translateY(30px);filter:blur(8px);
+  transition:opacity 0.9s ease,transform 0.9s ease,filter 0.9s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* MARQUEE */
+.marquee-wrap{
+  overflow:hidden;padding:40px 0;
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  margin:60px 0;position:relative;z-index:1;
+  background:#001A11;
+}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marqueeScroll 18s linear infinite;
+  width:max-content;
+}
+.marquee-item{
+  font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);padding:0 48px;
+  display:flex;align-items:center;gap:48px;white-space:nowrap;
+}
+.marquee-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--green-vibrant);display:inline-block;
+}
+@keyframes marqueeScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* SECTION TRANSITIONS — fade+slide between sections */
+.section-fade{
+  opacity:0;
+  transform:translateY(60px) scale(0.98);
+  filter:blur(14px);
+  transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1),
+             transform 1.1s cubic-bezier(0.16,1,0.3,1),
+             filter 1.1s cubic-bezier(0.16,1,0.3,1);
+}
+.section-fade.in-view{
+  opacity:1;transform:translateY(0) scale(1);filter:blur(0);
+}
+
+/* ── CLIENTS TRUST SECTION ── */
+#clients-trust{
+  background:#000f09;
+  padding:120px 0;
+  position:relative;
+  overflow:hidden;
+}
+.clients-parallax-bg{
+  position:absolute;inset:0;z-index:0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:4px;
+  filter:blur(22px) brightness(0.35) saturate(0.7);
+  transform:scale(1.08);
+  transition:transform 0.1s linear;
+  pointer-events:none;
+}
+.clients-parallax-bg .bg-tile{
+  background:#001510;
+  position:relative;overflow:hidden;
+}
+.clients-parallax-bg .bg-tile::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, rgba(0,168,120,0.12) 0%, transparent 70%);
+}
+.clients-parallax-bg .bg-tile.photo-slot{
+  background:linear-gradient(135deg, #002318 0%, #001510 50%, #003428 100%);
+}
+.clients-trust-inner{
+  position:relative;z-index:2;
+  padding:0 60px;
+}
+.clients-trust-inner .section-label{margin-bottom:20px}
+.clients-trust-headline{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(38px,4.5vw,60px);font-weight:700;
+  letter-spacing:-2px;line-height:0.95;
+  margin-bottom:16px;
+}
+.clients-trust-headline em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;color:var(--green-vibrant);
+  font-size:1.15em;letter-spacing:-2px;
+}
+.clients-trust-sub{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:17px;
+  color:rgba(255,255,255,0.45);margin-bottom:64px;
+  max-width:500px;line-height:1.6;
+}
+.clients-logos-wrap{
+  overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent 0%,black 10%,black 90%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,black 10%,black 90%,transparent 100%);
+  margin-bottom:12px;
+}
+.clients-logos-wrap.reverse .clients-logos-track{
+  animation-direction:reverse;
+}
+.clients-logos-track{
+  display:flex;gap:0;width:max-content;
+  animation:clientsScroll 28s linear infinite;
+}
+.clients-logo-item{
+  display:flex;align-items:center;justify-content:center;
+  padding:0 52px;height:72px;
+  border-right:1px solid rgba(255,255,255,0.05);
+  white-space:nowrap;
+}
+.clients-logo-item span{
+  font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.22);font-weight:500;
+  transition:color 0.4s;
+}
+.clients-logo-item:hover span{color:rgba(255,255,255,0.65)}
+.clients-logo-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--green-vibrant);opacity:0.4;
+  margin-right:16px;flex-shrink:0;
+}
+@keyframes clientsScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.clients-proof-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;margin-top:64px;
+}
+.proof-card{
+  background:rgba(0,35,24,0.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(0,168,120,0.1);
+  padding:36px 28px;
+  position:relative;overflow:hidden;
+  transition:background 0.4s,border-color 0.4s,transform 0.4s;
+}
+.proof-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green-vibrant),transparent);
+  opacity:0;transition:opacity 0.4s;
+}
+.proof-card:hover{
+  background:rgba(0,52,40,0.9);
+  border-color:rgba(0,168,120,0.25);
+  transform:translateY(-4px);
+}
+.proof-card:hover::before{opacity:1}
+.proof-metric{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(32px,3vw,48px);
+  font-weight:700;letter-spacing:-2px;
+  color:var(--white);line-height:1;margin-bottom:8px;
+}
+.proof-metric span{color:var(--green-vibrant)}
+.proof-label{
+  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);line-height:1.5;
+}
+.proof-client-tag{
+  display:inline-block;margin-top:20px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:13px;
+  color:var(--gold);opacity:0.7;
+}
+.proof-card::after{
+  content:'';position:absolute;
+  bottom:0;right:0;
+  width:60px;height:60px;
+  background:radial-gradient(circle at bottom right,rgba(0,168,120,0.12),transparent 70%);
+}
+
+/* RIPPLE ON PLAN CLICK */
+.ripple-effect{
+  position:absolute;border-radius:50%;
+  background:rgba(0,168,120,0.25);
+  transform:scale(0);animation:ripple 0.6s linear;
+  pointer-events:none;
+}
+@keyframes ripple{
+  to{transform:scale(4);opacity:0}
+}
+
+/* LANG TOGGLE */
+.lang-toggle{
+  display:flex;align-items:center;gap:4px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;padding:6px 12px;
+}
+.lang-btn{
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);background:none;border:none;
+  cursor:pointer;padding:0 6px;font-weight:500;
+  transition:color 0.3s;font-family:inherit;
+}
+.lang-btn.active{color:var(--white)}
+.lang-divider{
+  width:1px;height:12px;
+  background:rgba(255,255,255,0.15);
+}
+.lang-loading{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--green-vibrant);opacity:0;
+  transition:opacity 0.3s;pointer-events:none;
+}
+.lang-loading.visible{opacity:1}
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">horus.</a>
+  <ul class="nav-links">
+    <li><a href="#what">Qué hacemos</a></li>
+    <li><a href="#forwhom">Para quién</a></li>
+    <li><a href="#pricing">Sistemas</a></li>
+    <li><a href="#clients-trust">Clientes</a></li>
+<li><a href="#results">Resultados</a></li>
+  </ul>
+  <div class="lang-toggle">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <div class="lang-divider"></div>
+  <button class="lang-btn" data-lang="es">ES</button>
+  <span class="lang-loading" id="langLoading">···</span>
+</div>
+<a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="nav-cta">Hablar con nosotros</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="section-fade">
+  <div class="hero-eyebrow">Growth Marketing · Contenido · Diseño</div>
+  <h1 class="hero-title">
+    We make<br/>
+    brands <span class="italic">grow.</span>
+  </h1>
+  <p class="hero-sub">Sistemas reales. Resultados medibles. Nosotros no damos servicios, construimos estructuras de crecimiento.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/+5434369893100?text=Hola%20horus.%2C%20quiero%20empezar%20ahora." target="_blank" class="btn-primary">Empezar ahora</a>
+    <a href="#results" class="btn-ghost">Ver resultados</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="num">+1.6K</div>
+      <div class="label">proyectos completados</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">+125</div>
+      <div class="label">clientes activos</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">+3 años</div>
+      <div class="label">ayudando marcas</div>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Growth Marketing <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Creación de Contenido <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Landing Pages <span class="marquee-dot"></span></div>
+    <div class="marquee-item">React & HTML <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Diseño <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Social Media <span class="marquee-dot"></span></div>
+    <div class="marquee-item">AI-Powered Systems <span class="marquee-dot"></span></div>
+    <div class="marquee-item">+50K Seguidores <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Growth Marketing <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Creación de Contenido <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Landing Pages <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Carruseles <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Ads-LeadsMagnets <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Power Hooks <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Sistemas probado <span class="marquee-dot"></span></div>
+    <div class="marquee-item">+$100K Seguidores <span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section id="what" class="section-fade">
+  <div class="section-label reveal">Qué hacemos</div>
+  <div class="what-grid">
+    <div>
+      <h2 class="what-headline reveal reveal-delay-1">
+        No somos una agencia.<br/>
+        Somos tu<br/>
+        <em>sistema de crecimiento.</em>
+      </h2>
+      <div class="depth-grid reveal reveal-delay-2">
+        <div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div>
+        <div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div>
+        <div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell"></div>
+        <div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell"></div><div class="depth-cell"></div><div class="depth-cell filled"></div><div class="depth-cell filled"></div>
+      </div>
+    </div>
+    <div class="services-list reveal reveal-delay-2">
+      <div class="service-item">
+        <div>
+          <div class="service-name">Growth Marketing</div>
+          <div class="service-tag">Estrategia · Paid · Orgánico</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-item">
+        <div>
+          <div class="service-name">Contenido desde el guión</div>
+          <div class="service-tag">Video · Foto · Copy · Edicion · Guiones</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-item">
+        <div>
+          <div class="service-name">Landing Pages & Startups</div>
+          <div class="service-tag">HTML · CSS · React · Next.js · Ai Landing</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-item">
+        <div>
+          <div class="service-name">AI-Powered Systems Automatization</div>
+          <div class="service-tag">Automatización · Inteligencia · Escala</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-item">
+        <div>
+          <div class="service-name">Diseño y Dirección de Redes</div>
+          <div class="service-tag">Branding · Visual · Identidad · Escabilidad</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-item">
+        <div>
+          <div class="service-name">Captación de Clientes Potenciales</div>
+          <div class="service-tag">Multi-estrategia · Targeting · CRM · Comunidades · Nicho</div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="forwhom" class="section-fade">
+  <div class="section-label reveal">Para quién es horus.</div>
+  <div class="whom-cards">
+    <div class="whom-card reveal reveal-delay-1">
+      <div class="whom-num">01</div>
+      <div class="whom-title">Negocios que quieren escalar de verdad.</div>
+      <p class="whom-desc">Tienes tracción pero no sistema. Sabes que hay más, pero no sabes cómo llegar. Eso es exactamente para lo que existimos.</p>
+      <span class="whom-tag">High Ticket</span>
+    </div>
+    <div class="whom-card reveal reveal-delay-2">
+      <div class="whom-num">02</div>
+      <div class="whom-title">Marcas que necesitan presencia real en redes.</div>
+      <p class="whom-desc">Sin contenido vacío. Sin seguidores comprados. Construimos audiencias de valor que se convierten en clientes que pagan.</p>
+      <span class="whom-tag">+50K orgánicos</span>
+    </div>
+    <div class="whom-card reveal reveal-delay-3">
+      <div class="whom-num">03</div>
+      <div class="whom-title">Startups que necesitan su primer 100K USD.</div>
+      <p class="whom-desc">Desde el stack técnico hasta la estrategia de adquisición. Acompañamos cada etapa del camino hacia la primera gran facturación.</p>
+      <span class="whom-tag">+$100K USD</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section-fade">
+  <div class="section-label reveal">Nuestros sistemas</div>
+  <div class="pricing-title-block">
+    <h2 class="pricing-headline reveal reveal-delay-1">
+      Elige tu<br/>
+      <em>sistema de crecimiento.</em>
+    </h2>
+    <p class="pricing-sub reveal reveal-delay-2">Cada paquete es una estructura completa, no servicios sueltos. Un sistema diseñado para escalar.</p>
+  </div>
+  <div class="pricing-cards">
+    <!-- STARTER -->
+    <div class="price-card reveal reveal-delay-1">
+      <div class="price-tier-label">Sistema 01</div>
+      <div class="price-name">The Spark <em>— Starter</em></div>
+      <p class="price-tagline">Para marcas que están empezando a construir. La base sólida que todo crecimiento necesita.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Estrategia de contenido mensual</li>
+        <li>Diseño y edición de 10 piezas</li>
+        <li>Guiones y copy incluidos</li>
+        <li>Gestión de 1 red social</li>
+        <li>Reporte mensual de métricas</li>
+        <li>Acceso a sistema horus</li>
+      </ul>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Spark%20(Starter%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Spark — Starter">Aplicar ahora</a>
+    </div>
+    <!-- MEDIUM - FEATURED -->
+    <div class="price-card featured reveal reveal-delay-2">
+      <div class="featured-badge">Más elegido</div>
+      <div class="price-tier-label">Sistema 02</div>
+      <div class="price-name">The Engine <em>— Medium</em></div>
+      <p class="price-tagline">Para marcas que ya tienen base y quieren acelerar. Marcar punto de inflexión real.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Todo lo del Sistema 01</li>
+        <li>Producción de 20 piezas mensuales</li>
+        <li>Gestión de 2 redes sociales</li>
+        <li>Landing page o web incluida (a eleccion)</li>
+        <li>Paid media strategy (Meta/Google)</li>
+        <li>AI integrations & automations (CRM, ManyChat, Notion Systems)</li>
+        <li>Sesiones y reuniones de estrategia</li>
+      </ul>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Engine%20(Medium%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Engine — Medium">Aplicar ahora</a>
+    </div>
+    <!-- HIGH -->
+    <div class="price-card reveal reveal-delay-3">
+      <div class="price-tier-label">Sistema 03</div>
+      <div class="price-name">The Machine <em>— High</em></div>
+      <p class="price-tagline">Para marcas listas para dominar. Sistema completo de crecimiento con todo activado.</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Todo lo del Sistema 02</li>
+        <li>Producción ilimitada de contenido</li>
+        <li>3 redes + YouTube gestionadas</li>
+        <li>Equipo dedicado, todos los dias de la semana. non-stop </li>
+        <li>Funnel completo de captación (Social Media Ads, Lead Magnets, Email Nurturing, Webinars, Case Studies, White Papers, Lead Scoring, Automation, Testimonials, Reviews, Closing, Landing Pages, Call to Action (CTA), CRM, Conversion Rate Optimization (CRO), Analytics, Tracking Pixels.)</li>
+        <li>CRM y sistema de leads activo</li>
+        <li>Acceso prioritario a nuevas IAs</li>
+        <li>Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados</li>
+      </ul>
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Machine%20(High%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Machine — High">Aplicar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS TRUST -->
+<section id="clients-trust" class="section-fade">
+  <div class="clients-parallax-bg" id="clientsParallaxBg">
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile"></div>
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile"></div>
+    <div class="bg-tile"></div>
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile"></div>
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile"></div>
+    <div class="bg-tile photo-slot"></div>
+    <div class="bg-tile"></div>
+  </div>
+  <div class="clients-trust-inner">
+    <div class="section-label reveal">Confianza real</div>
+    <h2 class="clients-trust-headline reveal reveal-delay-1">
+      Marcas que<br/>
+      <em>confían en horus.</em>
+    </h2>
+    <p class="clients-trust-sub reveal reveal-delay-2">No somos una apuesta. Somos el sistema que ya eligieron más de 125 marcas para crecer en serio.</p>
+    <div class="clients-logos-wrap reveal reveal-delay-2">
+      <div class="clients-logos-track">
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Ideal MNG</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Negocio Capital</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Volkswagen</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Coach Blue +9Mfollowers</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Worldcast</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Niurkys Cabreras</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Marcos. M. Fals</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>joaquinlopezrealtor</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>ProCraft Restoration Group</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Ramiro Cubria</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>21Studios</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>PODMAKERS</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>FSB SUPLEMENTOS</span></div>
+      </div>
+    </div>
+    <div class="clients-logos-wrap reverse reveal reveal-delay-3">
+      <div class="clients-logos-track">
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Coach de Negocios</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Studio Fotográficos</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Restaurantes Internacionales</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Diseños Freelances</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Dra. Lucia Palma</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Cluster Insumos</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Paola Bermudez</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>INFUMATES</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>FyP Suplementos</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Lander Ferrero</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>R&G Seguridad e Higiene</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Fintech Latam</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>RC Detailing</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Proyectos Landing</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>App Móviles</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>E-commerce</span></div>
+      </div>
+    </div>
+    <div class="clients-proof-strip">
+      <div class="proof-card reveal reveal-delay-1">
+        <div class="proof-metric">78<span>K</span></div>
+        <div class="proof-label">seguidores orgánicos en 2 meses</div>
+        <span class="proof-client-tag">— Ramiro Cubria</span>
+      </div>
+      <div class="proof-card reveal reveal-delay-2">
+        <div class="proof-metric">3<span>×</span></div>
+        <div class="proof-label">conversión en landing vs. versión anterior</div>
+        <span class="proof-client-tag">— Cluster Insumos</span>
+      </div>
+      <div class="proof-card reveal reveal-delay-3">
+        <div class="proof-metric">$100<span>K</span></div>
+        <div class="proof-label">USD en 1 mes, con su programa coaching</div>
+        <span class="proof-client-tag">— joaquinlopezrealtor </span>
+      </div>
+      <div class="proof-card reveal reveal-delay-4">
+        <div class="proof-metric">+50<span>K</span></div>
+        <div class="proof-label">promedio de seguidores alcanzados por cliente, que buscan visibilidad.</div>
+        <span class="proof-client-tag">— Múltiples clientes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="section-fade">
+  <div class="results-header">
+    <div>
+      <div class="section-label reveal">Resultados reales</div>
+      <h2 class="results-headline reveal reveal-delay-1">
+        Los números<br/>
+        <em>no mienten.</em>
+      </h2>
+    </div>
+    <p class="results-note reveal reveal-delay-2">Tenemos pruebas de cada uno de estos números. No vendemos promesas.</p>
+  </div>
+  <div class="results-numbers">
+    <div class="result-num-card reveal reveal-delay-1">
+      <div class="big-num">+1.6K</div>
+      <div class="big-num-label">proyectos entregados con éxito</div>
+    </div>
+    <div class="result-num-card reveal reveal-delay-2">
+      <div class="big-num">+125</div>
+      <div class="big-num-label">clientes que nos confían su marca</div>
+    </div>
+    <div class="result-num-card reveal reveal-delay-3">
+      <div class="big-num">+50K</div>
+      <div class="big-num-label">seguidores alcanzados por cliente</div>
+    </div>
+   <div class="result-num-card reveal reveal-delay-4">
+      <div class="big-num">$100K</div>
+      <div class="big-num-label">USD facturados por clientes nuestros</div>
+    </div>
+    <div class="result-num-card reveal reveal-delay-4">
+      <div class="big-num">3+</div>
+      <div class="big-num-label">años de trayectoria comprobada</div>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-quote-mark">"</div>
+      <p class="testi-text">Multiplicamos nuestras ventas gracias al sistema de captación que Horus nos brindó. Nunca buscamos crecer en redes como prioridad, ¡pero aun así también crecimos!</p>
+      <div class="testi-author">
+        <span class="testi-name">Cluster Insumos</span>
+        <span class="testi-role">Founder · Tienda Insumos Informaticos Online</span>
+      </div>
+      <div class="testi-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-quote-mark">"</div>
+      <p class="testi-text">Gracias al contenido de Horus, logramos una visibilidad brutal para mi coaching. Esa autoridad fue clave para cerrar mes de 100k</p>
+      <div class="testi-author">
+        <span class="testi-name">joaquinlopezrealtor.</span>
+        <span class="testi-role">Realtor · Negocio Capital</span>
+      </div>
+      <div class="testi-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-quote-mark">"</div>
+      <p class="testi-text">El contenido que armamos con Horus no solo nos dio visibilidad, sino que se convirtió en una máquina de captación. Gracias a esa exposición constante, logramos generar cientos de dólares extra cada día de forma predecible.</p>
+      <div class="testi-author">
+        <span class="testi-name">Ramiro Cubria</span>
+        <span class="testi-role">CEO · Sell Your Knowledge</span>
+      </div>
+      <div class="testi-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-fade">
+  <div class="contact-grid-bg"></div>
+  <div class="contact-inner">
+    <div class="contact-text">
+      <h2 class="big reveal">
+        Hablemos.<br/>
+        <em>Crezcamos.</em>
+      </h2>
+      <p class="sub reveal reveal-delay-1">¿Listo para construir algo que realmente funcione? Un mensaje y ya estamos planeando por tu estrategia.</p>
+    </div>
+    <div class="contact-actions reveal reveal-delay-2">
+      <a href="https://wa.me/5434369893100?text=Hola%20horus.%2C%20quiero%20información%20sobre%20sus%20sistemas." target="_blank" class="wsp-btn">
+        <svg class="wsp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <span class="contact-footnote">Respondemos en menos de 6 horas</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">horus.</div>
+  <div class="foot-copy">© 2025 horus. · growth marketing</div>
+  <div class="foot-links">
+    <a href="https://instagram.com/horusbuild" target="_blank">@horusbuild</a>
+    <a href="#what">Servicios</a>
+    <a href="#contact">Contacto</a>
+  </div>
+</footer>
+
+<script>
+
+const clientsBg = document.getElementById('clientsParallaxBg');
+if(clientsBg){
+  const clientsSection = document.getElementById('clients-trust');
+  window.addEventListener('scroll', () => {
+    const rect = clientsSection.getBoundingClientRect();
+    const progress = -rect.top / (rect.height + window.innerHeight);
+    const offset = progress * 60;
+    clientsBg.style.transform = `scale(1.08) translateY(${offset}px)`;
+  }, {passive: true});
+}
+
+/* ── CURSOR ── */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '20px'; cursor.style.height = '20px';
+    ring.style.width = '60px'; ring.style.height = '60px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '10px'; cursor.style.height = '10px';
+    ring.style.width = '36px'; ring.style.height = '36px';
+  });
+});
+
+/* ── SCROLL REVEAL (elements) ── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── SECTION TRANSITIONS ── */
+const sectionObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in-view');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.section-fade').forEach(el => sectionObs.observe(el));
+
+/* Trigger hero immediately */
+document.querySelector('#hero').classList.add('in-view');
+
+/* ── RESULT NUM UNDERLINE ── */
+const numObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.3 });
+document.querySelectorAll('.result-num-card').forEach(el => numObs.observe(el));
+
+/* ── NAV SCROLL ── */
+const navEl = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  navEl.style.background = window.scrollY > 80
+    ? 'rgba(0,20,14,0.96)'
+    : 'linear-gradient(180deg,rgba(0,31,22,0.95) 0%,transparent 100%)';
+});
+
+/* ── SMOOTH ANCHOR SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* ── PLAN BUTTONS → WHATSAPP ── */
+document.querySelectorAll('.plan-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    /* ripple effect */
+    const rect = btn.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple-effect');
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px;`;
+    btn.style.position = 'relative';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+    /* WhatsApp open handled by href — no preventDefault needed */
+  });
+});
+
+async function translateText(text, targetLang){
+  const stripped = text.replace(/<[^>]+>/g, ' ').replace(/\s+/g,' ').trim();
+  if(!stripped) return text;
+
+  const cacheKey = stripped;
+  if(cache[targetLang][cacheKey]) return cache[targetLang][cacheKey];
+
+  try {
+    const res = await fetch('https://libretranslate.com/translate', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        q: stripped,
+        source: targetLang === 'en' ? 'es' : 'en',
+        target: targetLang,
+        format: 'text'
+      })
+    });
+    const data = await res.json();
+    const translated = data.translatedText;
+    cache[targetLang][cacheKey] = translated;
+    return translated;
+  } catch(e) {
+    return text;
+  }
+}
+
+</script>
+</body>
+</html>
