@@ -389,11 +389,141 @@ section{position:relative;z-index:1;padding:120px 60px}
 .price-cta:hover,.price-card.featured .price-cta{
   background:var(--green-vibrant);border-color:var(--green-vibrant);
 }
+.price-cta-gold{
+  border-color:rgba(200,169,110,0.3);
+}
+.price-cta-gold:hover{
+  background:var(--gold) !important;
+  border-color:var(--gold) !important;
+  color:var(--carbon) !important;
+}
 .featured-badge{
   position:absolute;top:0;right:40px;
   background:var(--gold);color:var(--carbon);
   font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
   padding:5px 12px;font-weight:700;
+}
+
+/* VOLUMEN / REELS SECTION */
+.volumen-section{background:#001510;padding:80px 60px}
+
+.volumen-bridge{
+  display:flex;align-items:center;gap:24px;
+  margin-bottom:64px;
+}
+.volumen-bridge-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,168,120,0.2),transparent);
+}
+.volumen-bridge-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:17px;
+  color:rgba(255,255,255,0.4);
+  text-align:center;white-space:nowrap;line-height:1.5;
+}
+.volumen-bridge-text span{
+  color:var(--green-vibrant);font-style:normal;display:block;font-size:14px;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;
+}
+
+.volumen-header{
+  display:flex;flex-direction:column;gap:12px;
+  margin-bottom:48px;
+}
+.volumen-headline{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(30px,3.5vw,48px);
+  font-weight:700;letter-spacing:-1.5px;line-height:0.95;
+}
+.volumen-headline em{
+  font-family:'Editors Note','EditorsNote',Georgia,serif;
+  font-style:italic;font-weight:500;
+  color:var(--green-vibrant);font-size:1.12em;letter-spacing:-1px;
+}
+.volumen-sub{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:16px;
+  color:rgba(255,255,255,0.4);
+}
+
+.volumen-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.vol-card{
+  background:#002318;
+  padding:36px 30px;
+  position:relative;overflow:hidden;
+  transition:transform 0.3s,background 0.3s;
+}
+.vol-card:hover{background:#002b1e;transform:translateY(-3px)}
+.vol-card.vol-featured{
+  background:#003428;
+  outline:1px solid var(--green-vibrant);
+  outline-offset:-1px;
+}
+.vol-featured-badge{
+  position:absolute;top:0;right:28px;
+  background:var(--gold);color:var(--carbon);
+  font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
+  padding:4px 10px;font-weight:700;
+}
+.vol-tier-label{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--green-vibrant);margin-bottom:10px;
+}
+.vol-tier-gold{color:var(--gold)}
+.vol-name{
+  font-size:22px;font-weight:700;letter-spacing:-0.5px;
+  margin-bottom:6px;
+}
+.vol-name em{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-weight:400;font-size:0.75em;
+  color:var(--gold);
+}
+.vol-name-gold em{color:var(--gold)}
+.vol-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;font-size:13px;
+  color:rgba(255,255,255,0.4);margin-bottom:28px;
+  line-height:1.6;
+}
+.vol-divider{
+  height:1px;background:rgba(255,255,255,0.07);margin-bottom:22px;
+}
+.vol-features{
+  list-style:none;display:flex;flex-direction:column;gap:10px;
+}
+.vol-features li{
+  font-size:12.5px;color:rgba(255,255,255,0.65);
+  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+}
+.vol-features li::before{
+  content:'';display:block;width:13px;height:13px;flex-shrink:0;margin-top:1px;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%2300A878' stroke-width='1'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%2300A878' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.vol-cta{
+  display:block;margin-top:28px;text-align:center;
+  padding:11px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;
+  border:1px solid rgba(0,168,120,0.25);color:var(--white);
+  transition:background 0.3s,border-color 0.3s;cursor:pointer;
+}
+.vol-cta:hover,.vol-cta-featured{
+  background:var(--green-vibrant);border-color:var(--green-vibrant);
+}
+.vol-cta-gold{
+  border-color:rgba(200,169,110,0.3);
+}
+.vol-cta-gold:hover{
+  background:var(--gold);border-color:var(--gold);color:var(--carbon);
+}
+.volumen-footnote{
+  margin-top:28px;
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.18);text-align:center;
 }
 
 /* RESULTS */
@@ -913,6 +1043,13 @@ footer{
 
   /* MARQUEE */
   .marquee-wrap{margin:40px 0}
+
+  /* VOLUMEN */
+  .volumen-section{padding:60px 24px}
+  .volumen-cards{grid-template-columns:1fr}
+  .volumen-bridge{flex-direction:column;gap:12px;text-align:center}
+  .volumen-bridge-line{width:60px;height:1px}
+  .volumen-bridge-text{white-space:normal}
 }
 
 @media(max-width:480px){
@@ -940,6 +1077,7 @@ footer{
     <li><a href="#what" data-nav="what">Qué hacemos</a></li>
     <li><a href="#forwhom" data-nav="forwhom">Para quién</a></li>
     <li><a href="#pricing" data-nav="pricing">Sistemas</a></li>
+    <li><a href="#volumen" data-nav="volumen">Reels</a></li>
     <li><a href="#clients-trust" data-nav="clients">Clientes</a></li>
     <li><a href="#results" data-nav="results">Resultados</a></li>
   </ul>
@@ -960,6 +1098,7 @@ footer{
     <li><a href="#what" class="mobile-nav-link">Qué hacemos</a></li>
     <li><a href="#forwhom" class="mobile-nav-link">Para quién</a></li>
     <li><a href="#pricing" class="mobile-nav-link">Sistemas</a></li>
+    <li><a href="#volumen" class="mobile-nav-link" data-nav="volumen">Reels</a></li>
     <li><a href="#clients-trust" class="mobile-nav-link">Clientes</a></li>
     <li><a href="#results" class="mobile-nav-link">Resultados</a></li>
   </ul>
@@ -1160,7 +1299,7 @@ footer{
       <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Engine%20(Medium%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Engine — Medium" data-t="p2-cta">Aplicar ahora</a>
     </div>
     <!-- HIGH -->
-    <div class="price-card reveal reveal-delay-3">
+    <div class="price-card reveal reveal-delay-3 price-card-gold">
       <div class="price-tier-label" data-t="p3-tier">Sistema 03</div>
       <div class="price-name"><span data-t="p3-name">The Machine</span> <em>— High</em></div>
       <p class="price-tagline" data-t="p3-tagline">Para marcas listas para dominar. Sistema completo de crecimiento con todo activado.</p>
@@ -1175,9 +1314,82 @@ footer{
         <li data-t="p3-f7">Acceso prioritario a nuevas IAs</li>
         <li data-t="p3-f8">Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados</li>
       </ul>
-      <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Machine%20(High%20Pack)." target="_blank" class="price-cta plan-btn" data-plan="The Machine — High" data-t="p3-cta">Aplicar ahora</a>
+      <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20información%20sobre%20The%20Machine%20(High%20Pack)." target="_blank" class="price-cta price-cta-gold plan-btn" data-plan="The Machine — High" data-t="p3-cta">Aplicar ahora</a>
     </div>
   </div>
+</section>
+
+<!-- VOLUME / REELS SECTION -->
+<section id="volumen" class="section-fade volumen-section">
+  <div class="volumen-bridge reveal">
+    <div class="volumen-bridge-line"></div>
+    <p class="volumen-bridge-text"><span data-t="vol-bridge-main">¿Ya tenés un sistema — o solo necesitás volumen de contenido?</span> <span data-t="vol-bridge-sub">También podemos ayudarte.</span></p>
+    <div class="volumen-bridge-line"></div>
+  </div>
+
+  <div class="volumen-header reveal reveal-delay-1">
+    <div class="section-label" data-t="vol-label">Producción de reels</div>
+    <h2 class="volumen-headline">
+      <span data-t="vol-h2-1">Paquetes de</span> <em data-t="vol-h2-em">volumen visual.</em>
+    </h2>
+    <p class="volumen-sub" data-t="vol-sub">Mismo sistema. Distinta escala de calidad. Elegí tu estándar de producción.</p>
+  </div>
+
+  <div class="volumen-cards">
+    <!-- BASIC -->
+    <div class="vol-card reveal reveal-delay-1">
+      <div class="vol-tier-label" data-t="vc1-tier">Calidad 01</div>
+      <div class="vol-name"><span data-t="vc1-name">Basic</span> <em data-t="vc1-sub">— Clipping</em></div>
+      <p class="vol-tagline" data-t="vc1-tagline">Contenido rápido, volumen masivo. Edición dinámica optimizada para redes con subtítulos animados y ritmo visual de impacto.</p>
+      <div class="vol-divider"></div>
+      <ul class="vol-features">
+        <li data-t="vc1-f1">Edición dinámica optimizada para redes</li>
+        <li data-t="vc1-f2">Subtítulos animados estéticos</li>
+        <li data-t="vc1-f3">Cortes precisos y ritmo visual</li>
+        <li data-t="vc1-f4">Entrega por lotes · 5–7 días hábiles</li>
+        <li data-t="vc1-f5">20 a 40+ reels según volumen</li>
+        <li data-t="vc1-f6">2–4 revisiones por lote</li>
+      </ul>
+      <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20info%20sobre%20el%20paquete%20de%20volumen%20Basic%20Clipping." target="_blank" class="vol-cta" data-t="vc1-cta">Consultar paquete</a>
+    </div>
+
+    <!-- MID-HIGH - FEATURED -->
+    <div class="vol-card vol-featured reveal reveal-delay-2">
+      <div class="vol-featured-badge" data-t="vc2-badge">El 71% elige este</div>
+      <div class="vol-tier-label" data-t="vc2-tier">Calidad 02</div>
+      <div class="vol-name"><span data-t="vc2-name">Mid-High</span> <em data-t="vc2-sub">— Production</em></div>
+      <p class="vol-tagline" data-t="vc2-tagline">Producción real. Motion Graphics premium, VFX, Sound Design y Music Bed incluidos. Contenido que posiciona marcas.</p>
+      <div class="vol-divider"></div>
+      <ul class="vol-features">
+        <li data-t="vc2-f1">Motion Graphics premium por pieza</li>
+        <li data-t="vc2-f2">VFX y transiciones de alto impacto</li>
+        <li data-t="vc2-f3">Music Bed + Sound Design incluidos</li>
+        <li data-t="vc2-f4">Entregas semanales · flujo continuo</li>
+        <li data-t="vc2-f5">20 a 40 reels según volumen</li>
+        <li data-t="vc2-f6">2–4 revisiones por lote</li>
+      </ul>
+      <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20info%20sobre%20el%20paquete%20de%20volumen%20Mid-High%20Production." target="_blank" class="vol-cta vol-cta-featured" data-t="vc2-cta">Consultar paquete</a>
+    </div>
+
+    <!-- GOD TIER -->
+    <div class="vol-card reveal reveal-delay-3">
+      <div class="vol-tier-label vol-tier-gold" data-t="vc3-tier">Calidad 03</div>
+      <div class="vol-name vol-name-gold"><span data-t="vc3-name">God Tier</span> <em data-t="vc3-sub">— Elite</em></div>
+      <p class="vol-tagline" data-t="vc3-tagline">Ingeniería visual de élite. Motion complejo, keyframes manuales en After Effects, Color Grading de cine. Cupos limitados.</p>
+      <div class="vol-divider"></div>
+      <ul class="vol-features">
+        <li data-t="vc3-f1">Motion Graphics complejos frame a frame</li>
+        <li data-t="vc3-f2">VFX + IA integration para Startups / SaaS</li>
+        <li data-t="vc3-f3">Sound Design & Mix a medida</li>
+        <li data-t="vc3-f4">Post-producción manual · 7–10 días hábiles</li>
+        <li data-t="vc3-f5">10 a 20 reels · enfoque total por pieza</li>
+        <li data-t="vc3-f6">4 revisiones · pulido al milímetro</li>
+      </ul>
+      <a href="https://wa.me/+543436989310?text=Hola%20horus.%20Quiero%20info%20sobre%20el%20paquete%20God%20Tier%20Elite." target="_blank" class="vol-cta vol-cta-gold" data-t="vc3-cta">Consultar paquete</a>
+    </div>
+  </div>
+
+  <p class="volumen-footnote reveal" data-t="vol-footnote">Cupos limitados en God Tier · 2 clientes por mes · Material provisto por el cliente</p>
 </section>
 
 <!-- CLIENTS TRUST -->
@@ -1205,9 +1417,9 @@ footer{
     <p class="clients-trust-sub reveal reveal-delay-2" data-t="clients-sub">No somos una apuesta. Somos el sistema que ya eligieron más de 125 marcas para crecer en serio.</p>
     <div class="clients-logos-wrap reveal reveal-delay-2">
       <div class="clients-logos-track">
-        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span>Tomas Buschiazzo</div>
-        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span>rc detailing automotive</div>
-        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span></span>infumate</div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Tomas Buschiazzo</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>rc detailing automotive</span></div>
+        <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>infumate</span></div>
         <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Ideal MNG</span></div>
         <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Negocio Capital</span></div>
         <div class="clients-logo-item"><span class="clients-logo-dot"></span><span>Volkswagen</span></div>
@@ -1498,6 +1710,7 @@ const translations = {
     '[data-nav="what"]':        'What We Do',
     '[data-nav="forwhom"]':     'For Whom',
     '[data-nav="pricing"]':     'Systems',
+    '[data-nav="volumen"]':     'Reels',
     '[data-nav="clients"]':     'Clients',
     '[data-nav="results"]':     'Results',
     '[data-nav="cta"]':         'Talk to us',
@@ -1574,6 +1787,49 @@ const translations = {
     '[data-t="p3-f7"]':         'Priority access to new AIs',
     '[data-t="p3-f8"]':         'Weekly call: strategy, content review, results review',
     '[data-t="p3-cta"]':        'Apply now',
+    /* VOLUME / REELS */
+    '[data-nav="volumen"]':       'Reels',
+    '[data-t="vol-bridge-main"]': 'Already have a system — or just need content volume?',
+    '[data-t="vol-bridge-sub"]':  'We can help with that too.',
+    '[data-t="vol-label"]':       'Reel Production',
+    '[data-t="vol-h2-1"]':        'Volume',
+    '[data-t="vol-h2-em"]':       'visual packages.',
+    '[data-t="vol-sub"]':         'Same system. Different quality scale. Choose your production standard.',
+    '[data-t="vc1-tier"]':        'Quality 01',
+    '[data-t="vc1-name"]':        'Basic',
+    '[data-t="vc1-sub"]':         '— Clipping',
+    '[data-t="vc1-tagline"]':     'Fast content, massive volume. Dynamic editing optimized for social with animated captions and visual rhythm.',
+    '[data-t="vc1-f1"]':          'Dynamic editing optimized for social',
+    '[data-t="vc1-f2"]':          'Aesthetic animated subtitles',
+    '[data-t="vc1-f3"]':          'Precise cuts & visual rhythm',
+    '[data-t="vc1-f4"]':          'Batch delivery · 5–7 business days',
+    '[data-t="vc1-f5"]':          '20 to 40+ reels by volume',
+    '[data-t="vc1-f6"]':          '2–4 revisions per batch',
+    '[data-t="vc1-cta"]':         'Ask about this package',
+    '[data-t="vc2-badge"]':       '71% choose this',
+    '[data-t="vc2-tier"]':        'Quality 02',
+    '[data-t="vc2-name"]':        'Mid-High',
+    '[data-t="vc2-sub"]':         '— Production',
+    '[data-t="vc2-tagline"]':     'Real production. Premium Motion Graphics, VFX, Sound Design and Music Bed included. Content that positions brands.',
+    '[data-t="vc2-f1"]':          'Premium Motion Graphics per piece',
+    '[data-t="vc2-f2"]':          'VFX & high-impact transitions',
+    '[data-t="vc2-f3"]':          'Music Bed + Sound Design included',
+    '[data-t="vc2-f4"]':          'Weekly deliveries · continuous flow',
+    '[data-t="vc2-f5"]':          '20 to 40 reels by volume',
+    '[data-t="vc2-f6"]':          '2–4 revisions per batch',
+    '[data-t="vc2-cta"]':         'Ask about this package',
+    '[data-t="vc3-tier"]':        'Quality 03',
+    '[data-t="vc3-name"]':        'God Tier',
+    '[data-t="vc3-sub"]':         '— Elite',
+    '[data-t="vc3-tagline"]':     'Elite visual engineering. Complex motion, manual keyframes in After Effects, cinematic color grading. Limited spots.',
+    '[data-t="vc3-f1"]':          'Complex Motion Graphics frame by frame',
+    '[data-t="vc3-f2"]':          'VFX + AI integration for Startups / SaaS',
+    '[data-t="vc3-f3"]':          'Custom Sound Design & Mix',
+    '[data-t="vc3-f4"]':          'Manual post-production · 7–10 business days',
+    '[data-t="vc3-f5"]':          '10 to 20 reels · total focus per piece',
+    '[data-t="vc3-f6"]':          '4 revisions · polished to the frame',
+    '[data-t="vc3-cta"]':         'Ask about this package',
+    '[data-t="vol-footnote"]':    'Limited spots in God Tier · 2 clients per month · Material provided by client',
     /* CLIENTS */
     '[data-t="clients-label"]': 'Real Trust',
     '[data-t="clients-h2-1"]':  'Visuals & Motion',
@@ -1614,6 +1870,7 @@ const translations = {
     '[data-nav="what"]':        'Qué hacemos',
     '[data-nav="forwhom"]':     'Para quién',
     '[data-nav="pricing"]':     'Sistemas',
+    '[data-nav="volumen"]':     'Reels',
     '[data-nav="clients"]':     'Clientes',
     '[data-nav="results"]':     'Resultados',
     '[data-nav="cta"]':         'Hablar con nosotros',
@@ -1685,6 +1942,49 @@ const translations = {
     '[data-t="p3-f7"]':         'Acceso prioritario a nuevas IAs',
     '[data-t="p3-f8"]':         'Llamada semanal con estrategias, revisiones de contenido, revision de estrategias, vista de resultados',
     '[data-t="p3-cta"]':        'Aplicar ahora',
+    /* VOLUMEN / REELS ES */
+    '[data-nav="volumen"]':       'Reels',
+    '[data-t="vol-bridge-main"]': '¿Ya tenés un sistema — o solo necesitás volumen de contenido?',
+    '[data-t="vol-bridge-sub"]':  'También podemos ayudarte.',
+    '[data-t="vol-label"]':       'Producción de reels',
+    '[data-t="vol-h2-1"]':        'Paquetes de',
+    '[data-t="vol-h2-em"]':       'volumen visual.',
+    '[data-t="vol-sub"]':         'Mismo sistema. Distinta escala de calidad. Elegí tu estándar de producción.',
+    '[data-t="vc1-tier"]':        'Calidad 01',
+    '[data-t="vc1-name"]':        'Basic',
+    '[data-t="vc1-sub"]':         '— Clipping',
+    '[data-t="vc1-tagline"]':     'Contenido rápido, volumen masivo. Edición dinámica optimizada para redes con subtítulos animados y ritmo visual de impacto.',
+    '[data-t="vc1-f1"]':          'Edición dinámica optimizada para redes',
+    '[data-t="vc1-f2"]':          'Subtítulos animados estéticos',
+    '[data-t="vc1-f3"]':          'Cortes precisos y ritmo visual',
+    '[data-t="vc1-f4"]':          'Entrega por lotes · 5–7 días hábiles',
+    '[data-t="vc1-f5"]':          '20 a 40+ reels según volumen',
+    '[data-t="vc1-f6"]':          '2–4 revisiones por lote',
+    '[data-t="vc1-cta"]':         'Consultar paquete',
+    '[data-t="vc2-badge"]':       'El 71% elige este',
+    '[data-t="vc2-tier"]':        'Calidad 02',
+    '[data-t="vc2-name"]':        'Mid-High',
+    '[data-t="vc2-sub"]':         '— Production',
+    '[data-t="vc2-tagline"]':     'Producción real. Motion Graphics premium, VFX, Sound Design y Music Bed incluidos. Contenido que posiciona marcas.',
+    '[data-t="vc2-f1"]':          'Motion Graphics premium por pieza',
+    '[data-t="vc2-f2"]':          'VFX y transiciones de alto impacto',
+    '[data-t="vc2-f3"]':          'Music Bed + Sound Design incluidos',
+    '[data-t="vc2-f4"]':          'Entregas semanales · flujo continuo',
+    '[data-t="vc2-f5"]':          '20 a 40 reels según volumen',
+    '[data-t="vc2-f6"]':          '2–4 revisiones por lote',
+    '[data-t="vc2-cta"]':         'Consultar paquete',
+    '[data-t="vc3-tier"]':        'Calidad 03',
+    '[data-t="vc3-name"]':        'God Tier',
+    '[data-t="vc3-sub"]':         '— Elite',
+    '[data-t="vc3-tagline"]':     'Ingeniería visual de élite. Motion complejo, keyframes manuales en After Effects, Color Grading de cine. Cupos limitados.',
+    '[data-t="vc3-f1"]':          'Motion Graphics complejos frame a frame',
+    '[data-t="vc3-f2"]':          'VFX + IA integration para Startups / SaaS',
+    '[data-t="vc3-f3"]':          'Sound Design & Mix a medida',
+    '[data-t="vc3-f4"]':          'Post-producción manual · 7–10 días hábiles',
+    '[data-t="vc3-f5"]':          '10 a 20 reels · enfoque total por pieza',
+    '[data-t="vc3-f6"]':          '4 revisiones · pulido al milímetro',
+    '[data-t="vc3-cta"]':         'Consultar paquete',
+    '[data-t="vol-footnote"]':    'Cupos limitados en God Tier · 2 clientes por mes · Material provisto por el cliente',
     '[data-t="clients-label"]': 'Confianza real',
     '[data-t="clients-h2-1"]':  'Visuales y Motion',
     '[data-t="clients-h2-em"]': 'desarrollados para.',
